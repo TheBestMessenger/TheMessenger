@@ -1,15 +1,26 @@
 import "./ChatsPage.css";
 
-import React from "react";
-import { Link } from "react-router-dom";
+import ChatTile from "../components/ChatTile/ChatTile"
+import { PROFILE_PICTURES_PREFIX } from "../config"
 
 const ChatsPage = () => {
+    const usernames = [
+        "Apollo", "Elizabeth", "Evgen", "Jake",
+        "Jane", "Javelina", "Marie", "Martha"
+    ]
     return (
         <>
             <h1>Chats</h1>
-            <Link to="/dm">
-                <button>DM</button>
-            </Link>
+            {
+                usernames.map((username, id) =>
+                    <ChatTile
+                        key={id}
+                        chatTitle={username}
+                        dmLink={"dm/" + username}
+                        imageLink={PROFILE_PICTURES_PREFIX + username + ".png"}
+                    />
+                )
+            }
         </>
     );
 }

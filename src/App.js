@@ -8,10 +8,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={ChatsPage()} />
-        <Route path="/dm" element={DMPage()} />
+        <Route path="/" element={<ChatsPage />} />
+        <Route path="/dm/:username" element={<DMPage />} />
 
-        <Route path="*" element={ErrorNotFound()} />
+        <Route path="*" element={<ErrorNotFound />} />
       </Routes>
     </Router>
   );
