@@ -1,13 +1,13 @@
 import "./DMPage.css";
-
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { PROFILE_PICTURES_PREFIX } from "../config"
+
 import DMHeader from "../components/DMHeader/DMHeader"
 import DMInput from "../components/DMInput/DMInput"
 import Message from "../components/Message/Message"
-import { PROFILE_PICTURES_PREFIX } from "../config"
 
-const DMPage = (props) => {
+const DMPage = () => {
     const { username } = useParams();
     let [messages, setMessages] = useState([
         { me: false, msg: "Hello", time: '14:41:59'},
@@ -21,7 +21,15 @@ const DMPage = (props) => {
                 me: true, msg: msg, time: new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds()
             }
         ])
-    }
+    };
+
+    // scrollToBottom
+    const messagesEndRef = useRef(null)
+    const scrollToBottom = () => {
+        messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    };
+    useEffect(scrollToBottom, [messages]);
+
     return (
         <>
             <DMHeader
@@ -30,20 +38,21 @@ const DMPage = (props) => {
                 imageLink={"../" + PROFILE_PICTURES_PREFIX + username + ".png"}
             />
             <div className="message-container">
-            {
-                messages.map((message, id) =>
-                    <Message
-                        key={id}
-                        text={message.msg}
-                        fromMe={message.me}
-                        time={message.time}
-                    />
-                )
-            }
+                {
+                    messages.map((message, id) =>
+                        <Message
+                            key={id}
+                            text={message.msg}
+                            fromMe={message.me}
+                            time={message.time}
+                        />
+                    )
+                }
             </div>
             <DMInput
                 handleMessage={handleMessage}
             />
+            <div ref={messagesEndRef}><></></div>
         </>
     );
 }
