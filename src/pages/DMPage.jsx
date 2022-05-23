@@ -10,15 +10,15 @@ import { PROFILE_PICTURES_PREFIX } from "../config"
 const DMPage = (props) => {
     const { username } = useParams();
     let [messages, setMessages] = useState([
-        { me: false, msg: "Hello" },
-        { me: true, msg: "Hi" },
-        { me: false, msg: "How are you?" },
-        { me: true, msg: "All right!" },
+        { me: false, msg: "Hello", time: '14:41:59'},
+        { me: true, msg: "Hi", time: '14:42:30' },
+        { me: false, msg: "How are you?", time: "14:43:02"},
+        { me: true, msg: "All right!", time: "14:44:15"},
     ]);
     const handleMessage = (msg) => {
         setMessages([
             ...messages, {
-                me: true, msg: msg
+                me: true, msg: msg, time: new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds()
             }
         ])
     }
@@ -29,15 +29,18 @@ const DMPage = (props) => {
                 chatTitle={username}
                 imageLink={"../" + PROFILE_PICTURES_PREFIX + username + ".png"}
             />
+            <div className="message-container">
             {
                 messages.map((message, id) =>
                     <Message
                         key={id}
                         text={message.msg}
                         fromMe={message.me}
+                        time={message.time}
                     />
                 )
             }
+            </div>
             <DMInput
                 handleMessage={handleMessage}
             />

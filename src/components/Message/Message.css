@@ -1,0 +1,44 @@
+body {
+    /*background: linear-gradient(to bottom right, #B3EBFF, #FBC2EB) no-repeat fixed;*/
+}
+
+.message {
+    display: flex;
+    margin: 2px;
+    max-width: 29rem;
+    /*width: 200px;*/
+    align-items: flex-end;
+    font-family: "Roboto", sans-serif;
+    position: relative;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+
+.in-message {
+    background-color: aliceblue;
+    border-radius: 0.75rem 0.75rem 0.75rem 0;
+    color: black;
+    margin-right: calc(100% - 100px);
+}
+
+
+.out-message {
+    background-color: dodgerblue;
+    border-radius: 0.75rem 0.75rem 0 0.75rem;
+    color: aliceblue;
+    margin-left: calc(100% - 100px);
+}
+
+.text-content {
+    /*position: absolute;*/
+    margin: 10px 10px 15px;
+    word-wrap: break-word;
+    overflow-x: hidden;
+}
+
+.message-time {
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    font-size: 11px;
+}
