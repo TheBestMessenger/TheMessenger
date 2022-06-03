@@ -12,7 +12,7 @@ const ChatTile = (props) => {
           <div className="friend">
             <div className="img-name">
               <img className="ava" src={imageLink}></img>
-              <div>
+              <div className={'chat-text-info'}>
                 <h1> {chatTitle} </h1>
                 <p className="message-text"> {lastMessage} </p>
               </div>

@@ -1,10 +1,8 @@
 .ava {
-  width: 15%;
-  height: 30%;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  margin-left: 2%;
-  margin-top: 1%;
-  margin-bottom: 1%;
+  margin: 10px 10px 10px 20px;
 }
 li {
   list-style: none;
@@ -26,7 +24,7 @@ li {
 h1 {
   font-size: 28px;
   /* font-family: f; */
-  margin-left: 10%;
+  margin-left: 17px;
   color: grey;
   transition: color 0.2s;
   font-family: "Roboto", sans-serif;
@@ -42,16 +40,20 @@ h1 {
 
 .message-text {
   transition: color 0.2s;
-  margin-left: 10%;
+  margin-left: 17px;
   font-family: "Roboto", sans-serif;
   color: rgba(98, 104, 95, 255);
   font-size: 20px;
-  /* background-color: red; */
   width: 100%;
+}
+
+.chat-text-info {
+  margin-left: 20px;
 }
 
 .friend:hover {
   background: rgba(43, 82, 120, 255);
+  border-radius: 0.75rem;
 }
 
 .friend .time {
@@ -103,7 +105,6 @@ h1 {
   background-color: rgba(0, 0, 0, 0.7);
   position: fixed;
   top: 0;
-  display: flex;
   justify-content: center;
   align-items: center;
   display: none;
