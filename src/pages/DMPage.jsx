@@ -25,7 +25,7 @@ const DMPage = () => {
     messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleMessage = (msg) => {
+  const handleMessageSend = (msg) => {
     fetch(BACKEND_SERVER_ROOT + chat_id + "/sendMessage", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -65,6 +65,40 @@ const DMPage = () => {
     setShowMenu(false);
   });
 
+  const sendEditRequest = useRef(() => {});
+  const [editMode, setEditMode] = useState(false);
+
+  const handleEdit = (message_id) => {
+    sendEditRequest.current = (new_msg) => {
+      fetch(BACKEND_SERVER_ROOT + chat_id + "/editMessage", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          authorId: userContext.authorId,
+          message_id: message_id,
+          new_msg: new_msg,
+        }),
+      });
+      setEditMode(false);
+    };
+    setEditMode(true);
+  };
+
+  const handleMessageEdit = (msg) => {
+    sendEditRequest.current(msg);
+  };
+
+  const handleDelete = (message_id) => {
+    fetch(BACKEND_SERVER_ROOT + chat_id + "/deleteMessage", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        authorId: userContext.authorId,
+        message_id: message_id,
+      }),
+    });
+  };
+
   return (
     <>
       <DMHeader
@@ -76,7 +110,15 @@ const DMPage = () => {
         style={{ position: "absolute", top: yPos.current, left: xPos.current }}
         ref={menuRef}
       >
-        {showMenu ? <ContextMenu message_id={cmMessageId.current} chat_id={chat_id} /> : ""}
+        {showMenu ? (
+          <ContextMenu
+            message_id={cmMessageId.current}
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
+          />
+        ) : (
+          ""
+        )}
       </div>
       <div className="message-container">
         {messages.map((message) => (
@@ -90,7 +132,10 @@ const DMPage = () => {
           />
         ))}
       </div>
-      <DMInput handleMessage={handleMessage} />
+      <DMInput
+        handleMessage={editMode ? handleMessageEdit : handleMessageSend}
+        sendText={editMode ? "edit" : "send"}
+      />
       <div ref={messagesEndRef}>
         <></>
       </div>
