@@ -6,6 +6,7 @@ import { BACKEND_SERVER_ROOT, PROFILE_PICTURES_PREFIX } from "../config";
 import DMHeader from "../components/DMHeader/DMHeader";
 import DMInput from "../components/DMInput/DMInput";
 import Message from "../components/Message/Message";
+import ContextMenu from "../components/Message/ContextMenu";
 import UserContext from "../contexts/UserContext";
 
 const DMPage = () => {
@@ -39,6 +40,24 @@ const DMPage = () => {
     scrollToBottom();
   }, [userContext]);
 
+  const menuRef = useRef(null);
+  const [xPos, setXPos] = useState("");
+  const [yPos, setYPos] = useState("");
+  const [showMenu, setShowMenu] = useState(false);
+
+  document.addEventListener("contextmenu", (event) => {
+    event.preventDefault();
+    if (event.target.classList.contains("message")) {
+      setXPos(event.pageX + "px");
+      setYPos(event.pageY + "px");
+      setShowMenu(true);
+    }
+  });
+  document.addEventListener("click", (event) => {
+    event.preventDefault();
+    setShowMenu(false);
+  });
+
   return (
     <>
       <DMHeader
@@ -46,6 +65,12 @@ const DMPage = () => {
         chatTitle={chat_id}
         imageLink={"../" + PROFILE_PICTURES_PREFIX + chat_id + ".png"}
       />
+      <div
+        style={{ position: "absolute", top: yPos, left: xPos }}
+        ref={menuRef}
+      >
+        {showMenu ? <ContextMenu /> : ""}
+      </div>
       <div className="message-container">
         {messages.map((message, id) => (
           <Message
@@ -57,8 +82,9 @@ const DMPage = () => {
           />
         ))}
       </div>
+      <DMInput handleMessage={handleMessage} />
       <div ref={messagesEndRef}>
-        <DMInput handleMessage={handleMessage} />
+        <></>
       </div>
     </>
   );

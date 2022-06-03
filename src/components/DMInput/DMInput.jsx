@@ -6,27 +6,21 @@ const DMInput = (props) => {
   const { handleMessage } = props;
   const [messageText, setMessageText] = useState("");
 
-  const handleChange = (event) => {
-    setMessageText(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = () => {
     handleMessage(messageText);
   };
 
   return (
     <div className="input">
-      <form onSubmit={handleSubmit}>
+      <form onClick={handleSubmit}>
         <div className="cmd">
-          {/* <TextareaAutosize className="texta" value={messageText} onChange={handleChange}></TextareaAutosize> */}
           <textarea
             className="texta"
             value={messageText}
-            onChange={handleChange}
+            onChange={(e) => setMessageText(e.target.value)}
           />
         </div>
-        <button class="btn" type="submit" value="Submit">
+        <button className="btn" type="submit" value="Submit">
           send
         </button>
       </form>
