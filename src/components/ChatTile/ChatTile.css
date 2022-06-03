@@ -1,0 +1,60 @@
+.ava{
+    width: 15%;
+    height: 30%;
+    border-radius: 50%;
+    margin-left: 2%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+} li{
+    list-style: none;
+}.friend{
+    display: flex;
+    height: 50%;
+    align-items: center;
+    transition: 0.7s ease;
+    justify-content: space-between;
+}.img-name{
+    display: flex;
+    align-items: center;
+}h1{
+    font-size: 28px;
+    font-family: f;
+    margin-left: 10%;
+    color: rgba(98,104,95,255);
+    transition: color 0.2s;
+}
+
+
+.friend:hover h1{
+    color: white;
+}
+
+.friend:hover p{
+    color: white;
+}
+
+
+
+p{
+    transition: color 0.2s;
+    margin-left: 10%;
+    color: rgba(98,104,95,255);
+    font-size: 20px;
+    /* background-color: red; */
+    width: 100%;
+}
+
+.friend:hover{
+    background: rgba(43,82,120,255);
+}
+
+.friend .time{
+    padding-right: 5%;
+
+}
+.friend .p1{
+    /* padding-right: 5%; */
+    margin-bottom: 140%;
+    font-size: 20px;
+    color: rgba(98,104,95,255);
+}
