@@ -1,26 +1,27 @@
 import "./DMPage.css";
-import { useState, useRef, useEffect, useContext } from "react";
+import { useRef, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { PROFILE_PICTURES_PREFIX } from "../config"
 
 import DMHeader from "../components/DMHeader/DMHeader"
 import DMInput from "../components/DMInput/DMInput"
 import Message from "../components/Message/Message"
-import MessageContext from "../contexts/MessageContext";
+import UserContext from "../contexts/UserContext";
 
 const DMPage = () => {
-    const messageContext = useContext(MessageContext);
+    const userContext = useContext(UserContext);
     const { chat_id } = useParams();
-    let [messages, setMessages] = useState(
-        messageContext.length !== 0 ? messageContext[
-            messageContext.findIndex((chat) => chat.chat_id === chat_id)].messages : []
-    );
+    const messages = userContext.chats.length !== 0 ? userContext.chats[
+        userContext.chats.findIndex((chat) => chat.chat_id === chat_id)].messages : [];
     const handleMessage = (msg) => {
-        setMessages([
-            ...messages, {
-                me: true, msg: msg, time: new Date().getHours() + ':' + new Date().getMinutes()
-            }
-        ])
+        fetch(BACKEND_SERVER_ROOT + chat_id + "/sendMessage", {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                authorId: "Mykhailo", message: msg
+            })
+        })
+        .then(response => response.json())
+        .then(data => setChatList(data.chats));
     };
 
     // scrollToBottom

@@ -4,13 +4,13 @@ import DMPage from "./pages/DMPage";
 import ChatsPage from "./pages/ChatsPage";
 import ErrorNotFound from "./pages/ErrorNotFound";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import MessageContext from './contexts/MessageContext';
+import UserContext from './contexts/UserContext';
 import { useEffect, useRef, useState } from 'react';
 import { BACKEND_SERVER_ROOT } from './config';
 
 function App() {
   const authorIdRef = useRef(uuidv4());
-  const [chatList, setChatList] = useState([]);
+  const [userInfo, setUserInfo] = useState({chats: [], authorId: ""});
 
   useEffect(() => {
     // fetch messages periodically
@@ -20,7 +20,10 @@ function App() {
         body: JSON.stringify({authorId: authorIdRef.current})
       })
       .then(response => response.json())
-      .then(data => setChatList(data.chats));
+      .then(data => setUserInfo({
+        chats: data.chats,
+        authorId: authorIdRef.current
+      }));
     }
     fetcher();
     const handle = setInterval(fetcher, 500);
@@ -30,7 +33,7 @@ function App() {
   }, []);
 
   return (
-    <MessageContext.Provider value={chatList}>
+    <UserContext.Provider value={userInfo}>
       <Router>
         <Routes>
           <Route path="/" element={<ChatsPage />} />
@@ -38,7 +41,7 @@ function App() {
           <Route path="*" element={<ErrorNotFound />} />
         </Routes>
       </Router>
-    </MessageContext.Provider>
+    </UserContext.Provider>
   );
 }
 

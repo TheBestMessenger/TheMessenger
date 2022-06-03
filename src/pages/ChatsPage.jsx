@@ -2,16 +2,16 @@ import "./ChatsPage.css";
 
 import ChatTile from "../components/ChatTile/ChatTile"
 import { PROFILE_PICTURES_PREFIX } from "../config"
-import MessageContext from "../contexts/MessageContext";
+import UserContext from "../contexts/UserContext";
 import { useContext } from "react";
 
 const ChatsPage = () => {
-    const messageContext = useContext(MessageContext);
+    const userContext = useContext(UserContext);
     return (
         <>
             <h1>Chats</h1>
             {
-                messageContext.length !== 0 ? messageContext.map((chat) =>
+                userContext.chats.length !== 0 ? userContext.chats.map((chat) =>
                     <ChatTile
                         key={chat.chat_id}
                         chatTitle={chat.chat_title}
