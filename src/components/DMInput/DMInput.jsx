@@ -16,10 +16,15 @@ const DMInput = (props) => {
     }
 
     return (
+        <div className = "input">
         <form onSubmit={handleSubmit}>
-            <textarea value={messageText} onChange={handleChange} />
-            <input type="submit" value="Submit" />
+            <div className="cmd">
+            {/* <TextareaAutosize className="texta" value={messageText} onChange={handleChange}></TextareaAutosize> */}
+            <textarea className="texta" value={messageText} onChange={handleChange} />
+            </div>
+			<button class="btn" type="submit" value="Submit">send</button>
         </form>
+        </div>
     );
 }
 

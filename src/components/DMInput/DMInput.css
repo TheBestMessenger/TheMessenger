@@ -1,0 +1,49 @@
+.input{
+    position:absolute;
+    height:20%;
+    bottom:0%;
+    right:30%;
+    left:30%;
+    position:fixed;
+}
+
+.cmd{
+	position: relative;
+    width:90%;
+	display: inline-block;
+    border-radius: 10px;
+    background-color: rgb(198,227,255);
+}
+
+.texta{
+    display:inline-block;
+	width: 95%;
+    height:100%;
+	background-color: white;
+	border: none;
+	margin: 5px;
+	font-size: 1.1rem;
+    display: inline-block;
+    outline:none;
+    resize:none;
+    background-color: transparent;
+    font-size:1.125rem;
+}
+
+
+.btn {
+	width:7rem;
+    color:#5585ff;
+    border:2px solid #5585ff;
+    background-color:transparent;
+    cursor:pointer;
+    line-height:2;
+    margin:0;
+    padding:0;
+    border-radius:1.5rem;
+    font-size:1.125rem;
+    text-transform:lowercase;
+    outline:none;
+    margin-left:35%;
+    margin-top:3%;
+ } 
