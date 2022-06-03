@@ -1,76 +1,76 @@
 .ava {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin: 10px 10px 10px 20px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 10px 10px 10px 20px;
 }
 
 .friend {
-    display: flex;
-    height: 50%;
-    align-items: center;
-    transition: 0.7s ease;
-    justify-content: space-between;
+  display: flex;
+  height: 50%;
+  align-items: center;
+  transition: 0.7s ease;
+  justify-content: space-between;
 }
 
 .img-name {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .recent-messages {
-    margin-left: 17px;
-    color: #adadad;
+  margin-left: 17px;
+  color: #adadad;
 }
 
 .username-chats {
-    font-size: 28px;
-    color: #ffffff;
-    transition: color 0.2s;
-    font-family: "Roboto", sans-serif;
+  font-size: 28px;
+  color: #ffffff;
+  transition: color 0.2s;
+  font-family: 'Roboto', sans-serif;
 }
 
 .friend:hover p {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 .message-text {
-    transition: color 0.2s;
-    margin-left: 17px;
-    font-family: "Roboto", sans-serif;
-    color: #adadad;
-    font-size: 20px;
-    width: 100%;
+  transition: color 0.2s;
+  margin-left: 17px;
+  font-family: 'Roboto', sans-serif;
+  color: #adadad;
+  font-size: 20px;
+  width: 100%;
 }
 
 .chat-text-info {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .friend:hover {
-    background: rgba(43, 82, 120, 255);
-    border-radius: 0.75rem;
+  background: rgba(43, 82, 120, 255);
+  border-radius: 0.75rem;
 }
 
 .time {
-    padding-right: 20px;
-    color: #adadad;
+  padding-right: 20px;
+  color: #adadad;
 }
 
 .chats-logo h1 {
-    font-size: 40px;
-    color: #ffffff;
+  font-size: 40px;
+  color: #ffffff;
 }
 
 .button {
-    background-color: Transparent;
-    background-repeat: no-repeat;
-    border: none;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
 }
 
 .profile-name {
-    color: white;
-    font-family: "Roboto", sans-serif;
-    font-size: large;
-    font-weight: bold;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: large;
+  font-weight: bold;
 }

@@ -21,8 +21,13 @@ const DMInput = (props) => {
             onChange={(e) => setMessageText(e.target.value)}
           />
         </div>
-        <button className='btn' type='submit' value='Submit' onClick={handleSubmit}>
-          { sendText }
+        <button
+          className='btn'
+          type='submit'
+          value='Submit'
+          onClick={handleSubmit}
+        >
+          {sendText}
         </button>
       </form>
     </div>

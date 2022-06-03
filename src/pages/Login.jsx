@@ -4,7 +4,7 @@ const LoginPage = () => {
   return (
     <>
       <div class='logo'>
-        <img className='logo-img' src='/logo512.png' alt='logo'/>
+        <img className='logo-img' src='/logo512.png' alt='logo' />
         <span className='sign-in'>Sign in to Telegram</span>
         <div className='subtitle'>
           <span className='info'>

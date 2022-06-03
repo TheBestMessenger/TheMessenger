@@ -4,7 +4,7 @@ const Register = () => {
   return (
     <>
       <div className='logo'>
-        <img className='logo-img' src='/logo512.png' alt='logo'/>
+        <img className='logo-img' src='/logo512.png' alt='logo' />
         <span className='sign-up-text'>Sign up in Telegram</span>
         <div className='subtitle'>
           <span className='info'>
