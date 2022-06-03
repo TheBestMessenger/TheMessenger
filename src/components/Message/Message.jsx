@@ -2,7 +2,7 @@ import "./Message.css";
 
 const Message = (props) => {
     const {text, fromMe, time} = props;
-    let read = true;
+    let read = false;
     if (fromMe) {
         return (
             <>
