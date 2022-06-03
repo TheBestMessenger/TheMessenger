@@ -1,58 +1,66 @@
-.ava{
+.ava {
     width: 80px;
     height: 80px;
     border-radius: 50%;
     margin: 10px 25px 10px 15px;
-} li{
+}
+
+li {
     list-style: none;
-}.friend{
+}
+
+.friend {
     display: flex;
     height: 50%;
     align-items: center;
     transition: 0.7s ease;
     justify-content: space-between;
-}.img-name{
+}
+
+.img-name {
     display: flex;
     align-items: center;
-}h1{
+}
+
+h1 {
     font-size: 28px;
     /*font-family: f;*/
     margin-left: 10%;
-    color: rgba(98,104,95,255);
+    color: rgba(98, 104, 95, 255);
     transition: color 0.1s;
 }
 
 
-.friend:hover h1{
+.friend:hover h1 {
     color: white;
 }
 
-.friend:hover p{
+.friend:hover p {
     color: white;
 }
 
 
-
-p{
+p {
     transition: color 0.1s;
     margin-left: 10%;
-    color: rgba(98,104,95,255);
+    color: rgba(98, 104, 95, 255);
     font-size: 20px;
     width: 100%;
 }
 
-.friend:hover{
-    background: rgba(43,82,120,255);
+.friend:hover {
+    background: rgba(43, 82, 120, 255);
     border-radius: 0.75rem;
 }
 
-.friend .time{
+.friend .time {
     padding-right: 5%;
 
 }
-.friend .p1{
+
+.friend .p1 {
     /* padding-right: 5%; */
     margin-bottom: 140%;
     font-size: 20px;
-    color: rgba(98,104,95,255);
+    color: rgba(98, 104, 95, 255);
 }
