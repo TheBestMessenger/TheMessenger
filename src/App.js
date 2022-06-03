@@ -7,6 +7,8 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import UserContext from "./contexts/UserContext";
 import { useEffect, useRef, useState } from "react";
 import { BACKEND_SERVER_ROOT } from "./config";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   const authorIdRef = useRef(uuidv4());
@@ -30,7 +32,7 @@ function App() {
             setUserInfo({
               chats: data.chats,
               authorId: authorIdRef.current,
-            })
+            });
             lastFetchVersion.current = data.version;
           }
         })
@@ -49,6 +51,8 @@ function App() {
     <UserContext.Provider value={userInfo}>
       <Router>
         <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/" element={<ChatsPage />} />
           <Route path="/dm/:chat_id" element={<DMPage />} />
           <Route path="*" element={<ErrorNotFound />} />

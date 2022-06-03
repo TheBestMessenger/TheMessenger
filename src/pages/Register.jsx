@@ -1,11 +1,10 @@
-import "./Registration.css";
+import "./Register.css";
 
-const RegistrationPage = () => {
-
+const Register = () => {
     return (
         <>
             <div className="logo">
-                <img className="logo_img" src="fake_tg.jpeg" alt="logo"></img>
+                <img className="logo_img" src="/logo512.png" alt="logo"></img>
                 <span className="sign_up_text">Sign up in Telegram</span>
                 <div className="subtitle">
                     <span className="info">Please enter your phone number
@@ -31,4 +30,4 @@ const RegistrationPage = () => {
     );
 }
 
-export default RegistrationPage
+export default Register

@@ -82,42 +82,40 @@
     margin-left: 2vh;
 }
 
-.phone_num input ~ label, .password input ~ label {
+.phone_num input ~ .label-login, .password input ~ .label-login {
     position: absolute;
     color: #adadad;
-    transform: translateY(-100%);
+    transform: translateY(-80%);
     pointer-events: none;
     font-family: "Roboto","Segoe UI","Helvetica Neue",sans-serif;
     margin-left: 2vh;
     transition:0.2s ease all; 
 }
 
-.phone_num input ~ label {
-    top: 54vh;
+.phone_num input ~ .label-login {
+    margin-block-start: -19px;
 }
 
-.password input ~ label {
-    top: 64.5vh;
+.password input ~ .label-login {
+    margin-block-start: -19px;
 }
 
-.phone_num input:hover ~ label {
+.phone_num input:hover ~ .label-login {
     color:rgb(73, 154, 234);
 }
 
-.password input:hover ~ label {
+.password input:hover ~ .label-login {
     color:rgb(73, 154, 234);
 }
 
-.phone_num input:focus ~ label,
-.phone_num input:valid ~ label {
-    top: 48vh;
+.phone_num input:focus ~ .label-login,
+.phone_num input:valid ~ .label-login {
     color:rgb(73, 154, 234);
 }
 
 
-.password input:focus ~ label,
-.password input:valid ~ label {
-    top: 58.5vh;
+.password input:focus ~ .label-login,
+.password input:valid ~ .label-login {
     color:rgb(73, 154, 234);
 }
 

@@ -5,7 +5,7 @@ const LoginPage = () => {
     return (
         <>
             <div class="logo">
-                <img className="logo_img" src="fake_tg.jpeg" alt="logo"></img>
+                <img className="logo_img" src="/logo512.png" alt="logo"></img>
                 <span className="sign_in">Sign in to Telegram</span>
                 <div className="subtitle">
                     <span className="info">Please enter your phone number
@@ -14,11 +14,11 @@ const LoginPage = () => {
                 <form className="sign-in" method="post">
                     <div className="phone_num">
                         <input type="text" id="phone" required/>
-                        <label>Phone number</label>
+                        <label className="label-login">Phone number</label>
                     </div>
                     <div className="password">
                         <input type="password" id="password" required/>
-                        <label>Password</label>
+                        <label className="label-login">Password</label>
                     </div>
                     <button className="sign-button" type="button">SIGN IN</button>
                 </form>
