@@ -87,15 +87,18 @@
 
 .phone_num input ~ label {
     top: 54vh;
+    font-size: 2vh;
 }
 
 
 .password input ~ label {
     top: 64.5vh;
+    font-size: 2vh;
 }
 
 .password-check input ~ label {
     top: 75vh;
+    font-size: 2vh;
 }
 
 .phone_num input:hover ~ label {
