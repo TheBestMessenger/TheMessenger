@@ -1,7 +1,7 @@
 import "./Message.css";
 
 const Message = (props) => {
-    const {text, fromMe, time} = props;
+    const {text, fromMe, time, edited} = props;
     let read = false;
     if (fromMe) {
         return (
