@@ -30,10 +30,6 @@ const DMPage = () => {
             body: JSON.stringify({
                 authorId: userContext.authorId, message: msg
             })
-        }).then(() => {
-            scrollToBottom();
-        }).catch(() => {
-            scrollToBottom();
         });
     };
 
@@ -44,14 +40,15 @@ const DMPage = () => {
 
 
     document.addEventListener('contextmenu', (event) => {
+        event.preventDefault();
         if (event.target.classList.contains('message')) {
-            event.preventDefault();
             setXPos(event.pageX + 'px');
             setYPos(event.pageY + 'px');
             setShowMenu(true);
         }
     });
-    document.addEventListener('click', () => {
+    document.addEventListener('click', (event) => {
+        event.preventDefault();
         setShowMenu(false);
     });
 
