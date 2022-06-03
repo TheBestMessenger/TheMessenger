@@ -1,5 +1,5 @@
 import "./DMPage.css";
-import { useRef, useEffect, useContext } from "react";
+import { useRef, useEffect, useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { BACKEND_SERVER_ROOT, PROFILE_PICTURES_PREFIX } from "../config"
 
@@ -10,6 +10,7 @@ import UserContext from "../contexts/UserContext";
 
 const DMPage = () => {
     const userContext = useContext(UserContext);
+    const messageWasSent = useRef(false);
     const { chat_id } = useParams();
     const messages = userContext.chats.length !== 0 ? userContext.chats[
         userContext.chats.findIndex((chat) => chat.chat_id === chat_id)].messages : [];
@@ -27,15 +28,18 @@ const DMPage = () => {
                 authorId: userContext.authorId, message: msg
             })
         }).then(() => {
-            scrollToBottom();
+            messageWasSent.current = true;
         }).catch(() => {
-            scrollToBottom();
+            messageWasSent.current = true;
         });
     };
 
     useEffect(() => {
-        scrollToBottom();
-    }, []);
+        if (messageWasSent.current) {
+            scrollToBottom();
+            messageWasSent.current = false;
+        }
+    }, [userContext]);
 
     return (
         <>
@@ -57,10 +61,11 @@ const DMPage = () => {
                     )
                 }
             </div>
-            <DMInput
-                handleMessage={handleMessage}
-            />
-            <div ref={messagesEndRef}><></></div>
+            <div ref={messagesEndRef}>
+                <DMInput
+                    handleMessage={handleMessage}
+                />
+            </div>
         </>
     );
 }
