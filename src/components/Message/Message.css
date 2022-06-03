@@ -16,6 +16,7 @@
     border-radius: 0.75rem 0.75rem 0.75rem 0;
     color: black;
     margin-right: calc(100% - 100px);
+    align-self: flex-start;
 }
 
 
@@ -24,6 +25,7 @@
     border-radius: 0.75rem 0.75rem 0 0.75rem;
     color: aliceblue;
     margin-left: calc(100% - 100px);
+    align-self: flex-end;
 }
 
 .message-text-container {
