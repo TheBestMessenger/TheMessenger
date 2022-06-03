@@ -10,15 +10,15 @@ import Message from "../components/Message/Message"
 const DMPage = () => {
     const { username } = useParams();
     let [messages, setMessages] = useState([
-        { me: false, msg: "Hello", time: '14:41:59'},
-        { me: true, msg: "Hi", time: '14:42:30' },
-        { me: false, msg: "How are you?", time: "14:43:02"},
-        { me: true, msg: "All right!", time: "14:44:15"},
+        { me: false, msg: "Hello", time: '14:41'},
+        { me: true, msg: "Hi", time: '14:42' },
+        { me: false, msg: "How are you?", time: "14:43"},
+        { me: true, msg: "All right!", time: "14:44"},
     ]);
     const handleMessage = (msg) => {
         setMessages([
             ...messages, {
-                me: true, msg: msg, time: new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds()
+                me: true, msg: msg, time: new Date().getHours() + ':' + new Date().getMinutes()
             }
         ])
     };
@@ -45,6 +45,7 @@ const DMPage = () => {
                             text={message.msg}
                             fromMe={message.me}
                             time={message.time}
+                            edited={message.edited}
                         />
                     )
                 }
