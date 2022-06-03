@@ -1,0 +1,123 @@
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo_img {
+    height: 20vh;
+    margin-top: 5vh;
+}
+
+.sign_in {
+    font-family: "Roboto","Segoe UI","Helvetica Neue",sans-serif;
+    font-size: 4vh;
+    margin-top: 5vh;
+    font-weight: 500;
+}
+
+.subtitle, .subtitle2 {
+    font-weight: normal;
+    font-family: "Roboto","Segoe UI","Helvetica Neue",sans-serif;
+    font-size: 2vh;
+    width: 30vh;
+    text-align: center;
+    margin-top: 2vh;
+    line-height: 130%;
+}
+
+.subtitle2 {
+    margin-top: 4vh;
+}
+
+.info {
+    color: rgb(144, 144, 144);
+}
+
+.sign-button, .sign-up-button {
+    height: 6vh;
+    width: 44vh;
+    border-radius: 1vh;
+    background-color: rgb(73, 154, 234);
+    border-style: hidden;
+    font-size: 2vh;
+    color: white;
+    margin-top: 6vh;
+    transition: all .3s linear;
+}
+
+.sign-up-button {
+    margin-top: 3vh;
+}
+
+.sign-button:hover, .sign-up-button:hover {
+    background-color: rgb(42, 86, 181);
+}
+
+.sign-in {
+    width: 44vh;
+    margin-top: 1vh;
+}
+.phone_num, .password {
+    height: 6vh;
+    width: 100%;
+    border: 2px solid #adadad;
+    border-radius: 1vh;
+    margin-top: 4vh;
+    transition: all .5s;
+}
+
+.phone_num:hover, .password:hover{
+    border-color: rgb(73, 154, 234);
+}
+
+.phone_num input, .password input {
+    height: 6vh;
+    width: 100%;
+    border: none;
+    background: none;
+    outline: none;
+    font-family: "Roboto","Segoe UI","Helvetica Neue",sans-serif;
+    font-size: 2vh;
+    margin-left: 2vh;
+}
+
+.phone_num input ~ label, .password input ~ label {
+    position: absolute;
+    color: #adadad;
+    transform: translateY(-100%);
+    pointer-events: none;
+    font-family: "Roboto","Segoe UI","Helvetica Neue",sans-serif;
+    margin-left: 2vh;
+    transition:0.2s ease all; 
+}
+
+.phone_num input ~ label {
+    top: 54vh;
+}
+
+.password input ~ label {
+    top: 64.5vh;
+}
+
+.phone_num input:hover ~ label {
+    color:rgb(73, 154, 234);
+}
+
+.password input:hover ~ label {
+    color:rgb(73, 154, 234);
+}
+
+.phone_num input:focus ~ label,
+.phone_num input:valid ~ label {
+    top: 48vh;
+    color:rgb(73, 154, 234);
+}
+
+
+.password input:focus ~ label,
+.password input:valid ~ label {
+    top: 58.5vh;
+    color:rgb(73, 154, 234);
+}
+
