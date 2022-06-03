@@ -34,7 +34,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<ChatsPage />} />
-          <Route path="/dm/:username" element={<DMPage />} />
+          <Route path="/dm/:chat_id" element={<DMPage />} />
           <Route path="*" element={<ErrorNotFound />} />
         </Routes>
       </Router>

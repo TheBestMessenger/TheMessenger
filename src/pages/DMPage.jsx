@@ -1,20 +1,20 @@
 import "./DMPage.css";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { PROFILE_PICTURES_PREFIX } from "../config"
 
 import DMHeader from "../components/DMHeader/DMHeader"
 import DMInput from "../components/DMInput/DMInput"
 import Message from "../components/Message/Message"
+import MessageContext from "../contexts/MessageContext";
 
 const DMPage = () => {
-    const { username } = useParams();
-    let [messages, setMessages] = useState([
-        { me: false, msg: "Hello", time: '14:41'},
-        { me: true, msg: "Hi", time: '14:42' },
-        { me: false, msg: "How are you?", time: "14:43"},
-        { me: true, msg: "All right!", time: "14:44"},
-    ]);
+    const messageContext = useContext(MessageContext);
+    const { chat_id } = useParams();
+    let [messages, setMessages] = useState(
+        messageContext.length !== 0 ? messageContext[
+            messageContext.findIndex((chat) => chat.chat_id === chat_id)].messages : []
+    );
     const handleMessage = (msg) => {
         setMessages([
             ...messages, {
@@ -34,8 +34,8 @@ const DMPage = () => {
         <>
             <DMHeader
                 goBackLink="/"
-                chatTitle={username}
-                imageLink={"../" + PROFILE_PICTURES_PREFIX + username + ".png"}
+                chatTitle={chat_id}
+                imageLink={"../" + PROFILE_PICTURES_PREFIX + chat_id + ".png"}
             />
             <div className="message-container">
                 {
