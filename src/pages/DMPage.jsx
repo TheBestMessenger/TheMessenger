@@ -1,7 +1,7 @@
 import "./DMPage.css";
 import { useRef, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { PROFILE_PICTURES_PREFIX } from "../config"
+import { BACKEND_SERVER_ROOT, PROFILE_PICTURES_PREFIX } from "../config"
 
 import DMHeader from "../components/DMHeader/DMHeader"
 import DMInput from "../components/DMInput/DMInput"
@@ -13,23 +13,29 @@ const DMPage = () => {
     const { chat_id } = useParams();
     const messages = userContext.chats.length !== 0 ? userContext.chats[
         userContext.chats.findIndex((chat) => chat.chat_id === chat_id)].messages : [];
-    const handleMessage = (msg) => {
-        fetch(BACKEND_SERVER_ROOT + chat_id + "/sendMessage", {
-            method: 'POST', headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                authorId: userContext.authorId, message: msg
-            })
-        })
-        .then(response => response.json())
-        .then(data => setChatList(data.chats));
-    };
 
     // scrollToBottom
     const messagesEndRef = useRef(null)
     const scrollToBottom = () => {
         messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     };
-    useEffect(scrollToBottom, [messages]);
+
+    const handleMessage = (msg) => {
+        fetch(BACKEND_SERVER_ROOT + chat_id + "/sendMessage", {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                authorId: userContext.authorId, message: msg
+            })
+        }).then(() => {
+            scrollToBottom();
+        }).catch(() => {
+            scrollToBottom();
+        });
+    };
+
+    useEffect(() => {
+        scrollToBottom();
+    }, []);
 
     return (
         <>

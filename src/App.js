@@ -20,10 +20,12 @@ function App() {
         body: JSON.stringify({authorId: authorIdRef.current})
       })
       .then(response => response.json())
+      .catch((err)=>{console.log("Message fetching error: ", err);})
       .then(data => setUserInfo({
         chats: data.chats,
         authorId: authorIdRef.current
-      }));
+      }))
+      .catch((err)=>{console.log("Message fetching error (response unpack): ", err);});
     }
     fetcher();
     const handle = setInterval(fetcher, 500);
