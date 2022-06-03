@@ -9,9 +9,9 @@ const ChatTile = (props) => {
         <Link to={dmLink}>
         <ul>
             <li>
-                <div class="friend">
-                    <div class="img-name">
-                    <img class = "ava"src={imageLink}></img>
+                <div className="friend">
+                    <div className="img-name">
+                    <img className = "ava" src={imageLink} alt={'user photo'}/>
                     <div>
 
                         <h1> {chatTitle} </h1>
