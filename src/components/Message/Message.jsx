@@ -20,7 +20,7 @@ const Message = (props) => {
             <>
                 <div className={'message in-message'}>
                     <p className={'message-text-container'}> {text} </p>
-                    <span className={'message-time'}> {`${edited1 ? 'Edited' : ''} ${time}`} </span>
+                    <span className={'message-time'}> {`${edited ? 'Edited' : ''} ${time}`} </span>
                 </div>
             </>
         );
