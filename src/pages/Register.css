@@ -4,16 +4,17 @@
     align-items: center;
 }
 
-.logo_img {
+.logo-img {
     height: 20vh;
     margin-top: 5vh;
 }
 
-.sign_up_text {
+.sign-up-text {
     font-family: "Roboto","Segoe UI","Helvetica Neue",sans-serif;
     font-size: 4vh;
     margin-top: 5vh;
     font-weight: 500;
+    color: #ffffff;
 }
 
 .subtitle {
@@ -37,7 +38,7 @@
     background-color: rgb(73, 154, 234);
     border-style: hidden;
     font-size: 2vh;
-    color: white;
+    color: #ffffff;
     margin-top: 5vh;
     transition: all .3s linear;
 }
@@ -51,7 +52,7 @@
     width: 44vh;
     margin-top: 1vh;
 }
-.phone_num, .password, .password-check {
+.phone-num, .password, .password-check {
     height: 6vh;
     width: 100%;
     border: 2px solid #adadad;
@@ -60,11 +61,11 @@
     transition: all .5s;
 }
 
-.phone_num:hover, .password:hover, .password-check:hover{
+.phone-num:hover, .password:hover, .password-check:hover{
     border-color: rgb(73, 154, 234);
 }
 
-.phone_num input, .password input, .password-check input {
+.phone-num input, .password input, .password-check input {
     height: 6vh;
     width: 100%;
     border: none;
@@ -73,9 +74,10 @@
     font-family: "Roboto","Segoe UI","Helvetica Neue",sans-serif;
     font-size: 2vh;
     margin-left: 2vh;
+    color: #ffffff;
 }
 
-.phone_num input ~ label, .password input ~ label, .password-check input ~ label {
+.phone-num input ~ label, .password input ~ label, .password-check input ~ label {
     position: absolute;
     color: #adadad;
     transform: translateY(-100%);
@@ -85,7 +87,7 @@
     transition:0.2s ease all; 
 }
 
-.phone_num input ~ label {
+.phone-num input ~ label {
     top: 54vh;
     font-size: 2vh;
 }
@@ -101,7 +103,7 @@
     font-size: 2vh;
 }
 
-.phone_num input:hover ~ label {
+.phone-num input:hover ~ label {
     color:rgb(73, 154, 234);
 }
 
@@ -113,8 +115,8 @@
     color:rgb(73, 154, 234);
 }
 
-.phone_num input:focus ~ label,
-.phone_num input:valid ~ label {
+.phone-num input:focus ~ label,
+.phone-num input:valid ~ label {
     top: 48vh;
     color:rgb(73, 154, 234);
 }
