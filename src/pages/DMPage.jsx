@@ -45,6 +45,7 @@ const DMPage = () => {
                             text={message.msg}
                             fromMe={message.me}
                             time={message.time}
+                            edited={message.edited}
                         />
                     )
                 }
