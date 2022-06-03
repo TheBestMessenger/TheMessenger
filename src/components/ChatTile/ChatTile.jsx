@@ -6,11 +6,7 @@ const ChatTile = (props) => {
   const { dmLink, imageLink, chatTitle, lastMessage } = props;
 
   return (
-    // <div>
-    //     <p>Hello kgj kfjgj fogjofh ogojf hgfh ghfojg jfhg </p>
-    // </div>
     <Link to={dmLink}>
-      {/* <script src ="functionality.js"> </script> */}
       <ul>
         <li>
           <div className="friend">

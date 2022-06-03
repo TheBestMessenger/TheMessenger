@@ -10,7 +10,6 @@ import UserContext from "../contexts/UserContext";
 
 const DMPage = () => {
   const userContext = useContext(UserContext);
-  const messageWasSent = useRef(false);
   const { chat_id } = useParams();
   const messages =
     userContext.chats.length !== 0
@@ -33,20 +32,11 @@ const DMPage = () => {
         authorId: userContext.authorId,
         message: msg,
       }),
-    })
-      .then(() => {
-        messageWasSent.current = true;
-      })
-      .catch(() => {
-        messageWasSent.current = true;
-      });
+    });
   };
 
   useEffect(() => {
-    if (messageWasSent.current) {
-      scrollToBottom();
-      messageWasSent.current = false;
-    }
+    scrollToBottom();
   }, [userContext]);
 
   return (

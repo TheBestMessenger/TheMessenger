@@ -10,6 +10,7 @@ import { BACKEND_SERVER_ROOT } from "./config";
 
 function App() {
   const authorIdRef = useRef(uuidv4());
+  const lastFetchVersion = useRef(-1);
   const [userInfo, setUserInfo] = useState({ chats: [], authorId: "" });
 
   useEffect(() => {
@@ -24,12 +25,15 @@ function App() {
         .catch((err) => {
           console.log("Message fetching error: ", err);
         })
-        .then((data) =>
-          setUserInfo({
-            chats: data.chats,
-            authorId: authorIdRef.current,
-          })
-        )
+        .then((data) => {
+          if (data.version > lastFetchVersion.current) {
+            setUserInfo({
+              chats: data.chats,
+              authorId: authorIdRef.current,
+            })
+            lastFetchVersion.current = data.version;
+          }
+        })
         .catch((err) => {
           console.log("Message fetching error (response unpack): ", err);
         });
