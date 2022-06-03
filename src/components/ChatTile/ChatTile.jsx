@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 const ChatTile = (props) => {
-    const {dmLink, imageLink, chatTitle} = props;
+    const {dmLink, imageLink, chatTitle, lastMessage} = props;
     return (
         <Link to={dmLink}>
         <ul>
@@ -15,7 +15,7 @@ const ChatTile = (props) => {
                     <div>
 
                         <h1> {chatTitle} </h1>
-                        <p> kkkkkgok hjfohjg iofhjioghj ofj ghjgject joing whire tgtgj odfmgoko </p>
+                        <p> {lastMessage} </p>
                         
                     </div>
                      
