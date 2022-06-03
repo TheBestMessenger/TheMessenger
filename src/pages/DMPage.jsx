@@ -17,7 +17,7 @@ const DMPage = () => {
         fetch(BACKEND_SERVER_ROOT + chat_id + "/sendMessage", {
             method: 'POST', headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                authorId: "Mykhailo", message: msg
+                authorId: userContext.authorId, message: msg
             })
         })
         .then(response => response.json())
