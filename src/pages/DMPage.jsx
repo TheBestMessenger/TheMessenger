@@ -46,8 +46,8 @@ const DMPage = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   document.addEventListener("contextmenu", (event) => {
-    event.preventDefault();
-    if (event.target.classList.contains("message")) {
+    if (event.target.classList.contains("message")) event.preventDefault();
+    if (event.target.classList.contains("out-message")) {
       setXPos(event.pageX + "px");
       setYPos(event.pageY + "px");
       setShowMenu(true);
