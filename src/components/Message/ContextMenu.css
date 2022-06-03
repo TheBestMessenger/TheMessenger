@@ -1,14 +1,14 @@
-
-
 .message-context-menu {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     width: 120px;
-    height: 130px;
     background-color: rgb(33,33,33);
     border-radius: 0.75rem;
+    z-index: 10;
+    padding: 3px 6px;
 }
 
 .message-context-menu-button {
@@ -17,19 +17,20 @@
     background-color: inherit;
     border-color: transparent;
     font-family: "Roboto", sans-serif;
-    font-size: 11px;
+    font-size: 8px;
     align-items: center;
     border-radius: 0.75rem;
     width: inherit;
     margin: 3px;
+    z-index: 10;
 }
 
 .message-context-menu-button:hover {
-    background-color: black;
+  background-color: black;
 }
 
 .icon {
-    width: 17px;
-    height: 17px;
-    padding-right: 20px;
+  width: 17px;
+  height: 17px;
+  padding-right: 20px;
 }

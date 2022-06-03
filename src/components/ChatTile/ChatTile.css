@@ -1,201 +1,194 @@
-.ava{
-    width: 15%;
-    height: 30%;
-    border-radius: 50%;
-    margin-left: 2%;
-    margin-top: 1%;
-    margin-bottom: 1%;
-} li{
-    list-style: none;
-}.friend{
-    display: flex;
-    height: 50%;
-    align-items: center;
-    transition: 0.7s ease;
-    justify-content: space-between;
-}.img-name{
-    display: flex;
-    align-items: center;
-}h1{
-    font-size: 28px;
-    /* font-family: f; */
-    margin-left: 10%;
-    color: grey;
-    transition: color 0.2s;
-    font-family: "Roboto", sans-serif;
+.ava {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 10px 10px 10px 20px;
+}
+li {
+  list-style: none;
 }
 
-
-.friend:hover h1{
-    color: white;
+.friend {
+  display: flex;
+  height: 50%;
+  align-items: center;
+  transition: 0.7s ease;
+  justify-content: space-between;
 }
 
-.friend:hover p{
-    color: white;
+.img-name {
+  display: flex;
+  align-items: center;
 }
 
-
-
-.message-text{
-    transition: color 0.2s;
-    margin-left: 10%;
-    font-family: "Roboto", sans-serif;
-    color: rgba(98,104,95,255);
-    font-size: 20px;
-    /* background-color: red; */
-    width: 100%;
+h1 {
+  font-size: 28px;
+  /* font-family: f; */
+  margin-left: 17px;
+  color: grey;
+  transition: color 0.2s;
+  font-family: "Roboto", sans-serif;
 }
 
-.friend:hover{
-    background: rgba(43,82,120,255);
+.friend:hover h1 {
+  color: white;
 }
 
-.friend .time{
-    padding-right: 5%;
-
-}
-.friend .p1{
-    /* padding-right: 5%; */
-    margin-bottom: 140%;
-    font-size: 20px;
-    color: rgba(98,104,95,255);
+.friend:hover p {
+  color: white;
 }
 
-.el{
-    /* background: red; */
-    position: relative;
-    
+.message-text {
+  transition: color 0.2s;
+  margin-left: 17px;
+  font-family: "Roboto", sans-serif;
+  color: rgba(98, 104, 95, 255);
+  font-size: 20px;
+  width: 100%;
 }
 
-.chats-logo{
-    padding-top: 2%;
-    position: absolute;
-    padding-left: 45px;
-    font-family: "Roboto", sans-serif;
-    padding-bottom: 10%;
-
-}
-.chats-logo h1{
-    font-size: 40px;
-
-}
-.button-wrapper{
-    padding-left: 85%;
-    padding-top: 3%;
-    padding-bottom: 1%;
-
+.chat-text-info {
+  margin-left: 20px;
 }
 
-.button{
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
-}
-.button-image{
-    width: 50%;
-    height: 50%;
-    border-radius: 50%;
-
-} 
-
-
-
-.bg-modal{
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    position: fixed;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    display: none;
+.friend:hover {
+  background: rgba(43, 82, 120, 255);
+  border-radius: 0.75rem;
 }
 
-.modal-content{
-    width: 450px;
-    height: 500px;
-    background-color: rgba(23,33,43,255);
-    border-radius: 2%;
-    text-align: center;
-    padding: 20px;
-    position: relative;
+.friend .time {
+  padding-right: 5%;
 }
 
-.image-profile{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+.friend .p1 {
+  /* padding-right: 5%; */
+  margin-bottom: 140%;
+  font-size: 20px;
+  color: rgba(98, 104, 95, 255);
 }
 
-.profile-name{
-    color: white;
-    font-family: "Roboto", sans-serif;
-    font-size: large;
-    font-weight: bold;
+.el {
+  /* background: red; */
+  position: relative;
 }
 
-
-.online-status{
-    color: rgb(105, 105, 213);
-    margin-top:-10px;
+.chats-logo {
+  padding-top: 2%;
+  position: absolute;
+  padding-left: 45px;
+  font-family: "Roboto", sans-serif;
+  padding-bottom: 10%;
+}
+.chats-logo h1 {
+  font-size: 40px;
+}
+.button-wrapper {
+  padding-left: 85%;
+  padding-top: 3%;
+  padding-bottom: 1%;
 }
 
-.close{
-    position: absolute;
-    top: 0;
-    right: 20px;
-    font-size: 40px;
-    transform: rotate(45deg);
-    cursor: pointer;
+.button {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+}
+.button-image {
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
 }
 
-
-.icons_outer{
-    position:relative;
-    display: flex;
-    margin-left:10%;
-    margin-right:10%;
-    flex-direction: column;
-    margin-top: 10%;
+.bg-modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  display: none;
 }
 
-.icon_inner{
-    padding: 10px;
-    margin-bottom:5%;
+.modal-content {
+  width: 450px;
+  height: 500px;
+  background-color: rgba(23, 33, 43, 255);
+  border-radius: 2%;
+  text-align: center;
+  padding: 20px;
+  position: relative;
 }
 
-.imgicon{
-    width:9%;
-    height:9%;
-    display: inline-block;
-    border-radius:50%;
-    float:left;
-
-
+.image-profile {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }
 
-.icon_text_left{
-    display:inline-block;
-    margin-left: 3%;
-    font-family: "Roboto", sans-serif;
-    font-size:1.125em;
-    color: white;
-    float:left;
+.profile-name {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-size: large;
+  font-weight: bold;
 }
 
-.icon_text_right{
-    display:inline-block;
-    margin-left: 3%;
-    font-family: "Roboto", sans-serif;
-    font-size:1.125em;
-    color: white;
-    float:right;
+.online-status {
+  color: rgb(105, 105, 213);
+  margin-top: -10px;
 }
 
-.icon_inner:hover{
-    
-    transition: color 1s;
-    background: rgba(43,82,120,255);
-    border-radius: 10px;
+.close {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  font-size: 40px;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+
+.icons_outer {
+  position: relative;
+  display: flex;
+  margin-left: 10%;
+  margin-right: 10%;
+  flex-direction: column;
+  margin-top: 10%;
+}
+
+.icon_inner {
+  padding: 10px;
+  margin-bottom: 5%;
+}
+
+.imgicon {
+  width: 9%;
+  height: 9%;
+  display: inline-block;
+  border-radius: 50%;
+  float: left;
+}
+
+.icon_text_left {
+  display: inline-block;
+  margin-left: 3%;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.125em;
+  color: white;
+  float: left;
+}
+
+.icon_text_right {
+  display: inline-block;
+  margin-left: 3%;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.125em;
+  color: white;
+  float: right;
+}
+
+.icon_inner:hover {
+  transition: color 1s;
+  background: rgba(43, 82, 120, 255);
+  border-radius: 10px;
 }
