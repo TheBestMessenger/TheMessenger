@@ -91,6 +91,7 @@ const ChatsPage = () => {
               0,
               50
             )}
+            time={chat.messages[chat.messages.length - 1].time.slice(0, 50)}
           />
         ))
       ) : (

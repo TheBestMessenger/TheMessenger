@@ -12,7 +12,7 @@ const DMInput = (props) => {
 
   return (
     <div className="input">
-      <form onClick={handleSubmit}>
+      <form className="form" onClick={handleSubmit}>
         <div className="cmd">
           <textarea
             className="texta"
