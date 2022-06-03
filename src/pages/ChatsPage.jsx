@@ -15,9 +15,14 @@ const ChatsPage = () => {
           <h1>Chats</h1>
         </div>
         <div className="button-wrapper">
-          <button type="button" id="button" className="button" onClick={
-              () => {document.querySelector(".bg-modal").style.display = "flex";}
-          }>
+          <button
+            type="button"
+            id="button"
+            className="button"
+            onClick={() => {
+              document.querySelector(".bg-modal").style.display = "flex";
+            }}
+          >
             <img
               className="button-image"
               src={PROFILE_PICTURES_PREFIX + "Apollo.png"}
@@ -34,9 +39,15 @@ const ChatsPage = () => {
           ></img>
           <p className="profile-name"> Apollo Ukrainian </p>
           <p className="online-status"> online </p>
-          <div className="close" onClick={
-              () => {document.querySelector(".bg-modal").style.display = "none";}
-          }> + </div>
+          <div
+            className="close"
+            onClick={() => {
+              document.querySelector(".bg-modal").style.display = "none";
+            }}
+          >
+            {" "}
+            +{" "}
+          </div>
 
           <div className="icons_outer">
             <div className="icon_inner">
