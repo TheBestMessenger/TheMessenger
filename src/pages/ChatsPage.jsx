@@ -2,24 +2,24 @@ import "./ChatsPage.css";
 
 import ChatTile from "../components/ChatTile/ChatTile"
 import { PROFILE_PICTURES_PREFIX } from "../config"
+import UserContext from "../contexts/UserContext";
+import { useContext } from "react";
 
 const ChatsPage = () => {
-    const usernames = [
-        "Apollo", "Elizabeth", "Evgen", "Jake",
-        "Jane", "Javelina", "Marie", "Martha"
-    ]
+    const userContext = useContext(UserContext);
     return (
         <>
             <h1>Chats</h1>
             {
-                usernames.map((username, id) =>
+                userContext.chats.length !== 0 ? userContext.chats.map((chat) =>
                     <ChatTile
-                        key={id}
-                        chatTitle={username}
-                        dmLink={"dm/" + username}
-                        imageLink={PROFILE_PICTURES_PREFIX + username + ".png"}
+                        key={chat.chat_id}
+                        chatTitle={chat.chat_title}
+                        dmLink={"dm/" + chat.chat_title}
+                        imageLink={PROFILE_PICTURES_PREFIX + chat.chat_title + ".png"}
+                        lastMessage={chat.messages[chat.messages.length - 1].msg.slice(0, 50)}
                     />
-                )
+                ) : <p>Loading...</p>
             }
         </>
     );

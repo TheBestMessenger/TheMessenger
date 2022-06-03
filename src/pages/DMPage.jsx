@@ -1,41 +1,48 @@
 import "./DMPage.css";
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { PROFILE_PICTURES_PREFIX } from "../config"
+import { BACKEND_SERVER_ROOT, PROFILE_PICTURES_PREFIX } from "../config"
 
 import DMHeader from "../components/DMHeader/DMHeader"
 import DMInput from "../components/DMInput/DMInput"
 import Message from "../components/Message/Message"
+import UserContext from "../contexts/UserContext";
 
 const DMPage = () => {
-    const { username } = useParams();
-    let [messages, setMessages] = useState([
-        { me: false, msg: "Hello", time: '14:41'},
-        { me: true, msg: "Hi", time: '14:42' },
-        { me: false, msg: "How are you?", time: "14:43"},
-        { me: true, msg: "All right!", time: "14:44"},
-    ]);
-    const handleMessage = (msg) => {
-        setMessages([
-            ...messages, {
-                me: true, msg: msg, time: new Date().getHours() + ':' + new Date().getMinutes()
-            }
-        ])
-    };
+    const userContext = useContext(UserContext);
+    const { chat_id } = useParams();
+    const messages = userContext.chats.length !== 0 ? userContext.chats[
+        userContext.chats.findIndex((chat) => chat.chat_id === chat_id)].messages : [];
 
     // scrollToBottom
     const messagesEndRef = useRef(null)
     const scrollToBottom = () => {
         messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     };
-    useEffect(scrollToBottom, [messages]);
+
+    const handleMessage = (msg) => {
+        fetch(BACKEND_SERVER_ROOT + chat_id + "/sendMessage", {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                authorId: userContext.authorId, message: msg
+            })
+        }).then(() => {
+            scrollToBottom();
+        }).catch(() => {
+            scrollToBottom();
+        });
+    };
+
+    useEffect(() => {
+        scrollToBottom();
+    }, []);
 
     return (
         <>
             <DMHeader
                 goBackLink="/"
-                chatTitle={username}
-                imageLink={"../" + PROFILE_PICTURES_PREFIX + username + ".png"}
+                chatTitle={chat_id}
+                imageLink={"../" + PROFILE_PICTURES_PREFIX + chat_id + ".png"}
             />
             <div className="message-container">
                 {
@@ -45,6 +52,7 @@ const DMPage = () => {
                             text={message.msg}
                             fromMe={message.me}
                             time={message.time}
+                            edited={message.edited}
                         />
                     )
                 }
