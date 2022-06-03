@@ -7,8 +7,8 @@ const Message = (props) => {
         return (
             <>
                 <div className={'message out-message'}>
-                    <p className={'message-text-container'}> {text} </p>
-                    <span className={'message-time'}> {`${edited ? 'Edited' : ''} ${time}`} <img
+                    <p className={'message message-text-container'}> {text} </p>
+                    <span className={'message message-time'}> {`${edited ? 'Edited' : ''} ${time}`} <img
                         className={'message-tick-icon'}
                         src={`/icons/${read ? 'read' : 'delivered'}.svg`}
                         alt={'tick icon'}/> </span>
@@ -19,8 +19,8 @@ const Message = (props) => {
         return (
             <>
                 <div className={'message in-message'}>
-                    <p className={'message-text-container'}> {text} </p>
-                    <span className={'message-time'}> {`${edited ? 'Edited' : ''} ${time}`} </span>
+                    <p className={'message message-text-container'}> {text} </p>
+                    <span className={'message message-time'}> {`${edited ? 'Edited' : ''} ${time}`} </span>
                 </div>
             </>
         );

@@ -1,11 +1,12 @@
 import "./DMPage.css";
-import { useRef, useEffect, useContext } from "react";
+import { useRef, useEffect, useContext, useState } from 'react';
 import { useParams } from "react-router-dom";
 import { BACKEND_SERVER_ROOT, PROFILE_PICTURES_PREFIX } from "../config"
 
 import DMHeader from "../components/DMHeader/DMHeader"
 import DMInput from "../components/DMInput/DMInput"
 import Message from "../components/Message/Message"
+import ContextMenu from '../components/Message/ContextMenu';
 import UserContext from "../contexts/UserContext";
 
 const DMPage = () => {
@@ -19,6 +20,9 @@ const DMPage = () => {
     const scrollToBottom = () => {
         messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     };
+    useEffect(() => {
+        scrollToBottom();
+    }, []);
 
     const handleMessage = (msg) => {
         fetch(BACKEND_SERVER_ROOT + chat_id + "/sendMessage", {
@@ -33,9 +37,23 @@ const DMPage = () => {
         });
     };
 
-    useEffect(() => {
-        scrollToBottom();
-    }, []);
+    const menuRef = useRef(null);
+    const [xPos, setXPos] = useState('');
+    const [yPos, setYPos] = useState('');
+    const [showMenu, setShowMenu] = useState(false);
+
+
+    document.addEventListener('contextmenu', (event) => {
+        if (event.target.classList.contains('message')) {
+            event.preventDefault();
+            setXPos(event.pageX + 'px');
+            setYPos(event.pageY + 'px');
+            setShowMenu(true);
+        }
+    });
+    document.addEventListener('click', () => {
+        setShowMenu(false);
+    });
 
     return (
         <>
@@ -44,6 +62,11 @@ const DMPage = () => {
                 chatTitle={chat_id}
                 imageLink={"../" + PROFILE_PICTURES_PREFIX + chat_id + ".png"}
             />
+            <div style={{position: 'absolute', top: yPos, left: xPos}} ref={menuRef}>
+                { showMenu ?
+                    <ContextMenu/> : ''
+                }
+            </div>
             <div className="message-container">
                 {
                     messages.map((message, id) =>

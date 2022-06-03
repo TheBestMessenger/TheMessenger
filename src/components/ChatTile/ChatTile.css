@@ -43,7 +43,7 @@ h1 {
 p {
     transition: color 0.1s;
     margin-left: 10%;
-    color: rgba(98, 104, 95, 255);
+    /*color: rgba(98, 104, 95, 255);*/
     font-size: 20px;
     width: 100%;
 }

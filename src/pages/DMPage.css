@@ -2,7 +2,7 @@
 .message-container {
     width: calc(100% - 25vw);
     max-width: 45.5rem;
-    min-height: 100%;
+    margin-bottom: 150px !important;
     margin: 0 auto;
     display: flex;
     justify-content: flex-end;
