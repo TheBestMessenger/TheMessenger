@@ -41,15 +41,22 @@ const DMPage = () => {
   }, [userContext]);
 
   const menuRef = useRef(null);
-  const [xPos, setXPos] = useState("");
-  const [yPos, setYPos] = useState("");
+  const xPos = useRef("");
+  const yPos = useRef("");
+  const cmMessageId = useRef("");
   const [showMenu, setShowMenu] = useState(false);
 
   document.addEventListener("contextmenu", (event) => {
     if (event.target.classList.contains("message")) event.preventDefault();
-    if (event.target.classList.contains("out-message")) {
-      setXPos(event.pageX + "px");
-      setYPos(event.pageY + "px");
+    if (
+      event.target.classList.contains("out-message") ||
+      event.target.parentElement.classList.contains("out-message")
+    ) {
+      xPos.current = event.pageX + "px";
+      yPos.current = event.pageY + "px";
+      cmMessageId.current =
+        event.target.getAttribute("message_id") ||
+        event.target.parentElement.getAttribute("message_id");
       setShowMenu(true);
     }
   });
@@ -66,19 +73,20 @@ const DMPage = () => {
         imageLink={"../" + PROFILE_PICTURES_PREFIX + chat_id + ".png"}
       />
       <div
-        style={{ position: "absolute", top: yPos, left: xPos }}
+        style={{ position: "absolute", top: yPos.current, left: xPos.current }}
         ref={menuRef}
       >
-        {showMenu ? <ContextMenu /> : ""}
+        {showMenu ? <ContextMenu message_id={cmMessageId.current} chat_id={chat_id} /> : ""}
       </div>
       <div className="message-container">
-        {messages.map((message, id) => (
+        {messages.map((message) => (
           <Message
-            key={id}
+            key={message.message_id}
             text={message.msg}
             fromMe={message.me}
             time={message.time}
             edited={message.edited}
+            message_id={message.message_id}
           />
         ))}
       </div>
