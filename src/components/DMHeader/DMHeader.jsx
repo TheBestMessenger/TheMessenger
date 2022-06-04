@@ -6,8 +6,8 @@ const DMHeader = (props) => {
   const { goBackLink, imageLink, chatTitle } = props;
   return (
     <header>
-      <Link to={goBackLink}>
-        <span className="return">Back to chats</span>
+      <Link className={'back-to-chats'} to={goBackLink}>
+        <p className={'return-chats-text'}> Back to chats </p>
       </Link>
       <div className="user">
         <span className="user-name"> {chatTitle} </span>

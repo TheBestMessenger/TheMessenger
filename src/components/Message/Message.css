@@ -1,34 +1,36 @@
 .message {
   display: flex;
-  margin: 2px;
+  margin: 4px 2px;
   width: fit-content;
   max-width: 25rem;
-  min-width: 120px;
+  min-width: 24%;
   align-items: flex-end;
   font-family: 'Roboto', sans-serif;
+  font-size: 16px;
   position: relative;
   box-sizing: border-box;
   word-wrap: break-word;
+  color: #FFFFFF;
 }
 
 .in-message {
-  background-color: aliceblue;
+  background-color: #212121;
   border-radius: 0.75rem 0.75rem 0.75rem 0;
-  color: black;
   margin-right: calc(100% - 100px);
   align-self: flex-start;
+  box-shadow: 0 0 5px 5px rgba(16,16,16,0.611765);
 }
 
 .out-message {
-  background-color: dodgerblue;
+  background-color: #3390ec;
   border-radius: 0.75rem 0.75rem 0 0.75rem;
-  color: aliceblue;
   margin-left: calc(100% - 100px);
   align-self: flex-end;
+  box-shadow: 0 0 5px 5px rgba(16,16,16,0.611765);
 }
 
 .message-text-container {
-  margin: 10px 10px 15px;
+  margin: 10px 10px 20px;
   word-wrap: break-word;
   overflow-x: hidden;
   padding-bottom: 5px;
@@ -41,8 +43,18 @@
   position: absolute;
   right: 10px;
   bottom: 3px;
-  font-size: 10px;
+  font-size: 12px;
   align-items: center;
+  color: #686C72BF;
+  font-family: "Roboto", sans-serif;
+}
+
+.message-time-in {
+  color: #686C72BF;
+}
+
+.message-time-out {
+  color: #FFFFFF88;
 }
 
 .message-tick-icon {
