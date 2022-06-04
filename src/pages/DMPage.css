@@ -1,5 +1,5 @@
 .message-container {
-  width: calc(100% - 25vw);
+  width: calc(100% - 10vw);
   max-width: 45.5rem;
   margin-bottom: 150px !important;
   margin: 0 auto;

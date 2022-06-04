@@ -1,39 +1,46 @@
 .input {
-  position: absolute;
-  height: 130px;
-  bottom: 0;
-  right: 30%;
-  left: 30%;
   position: fixed;
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  width: 100%;
+  bottom: 0;
+  background-color: #000000;
+  box-shadow: 0 0 10px 2px rgba(16,16,16,0.611765);
+  z-index: 1;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  margin-bottom: 20px;
 }
 
 .cmd {
-  position: relative;
-  width: 90%;
+  width: 100%;
   display: inline-block;
   border-radius: 10px;
-  background-color: rgb(198, 227, 255);
+  background-color: #212121;
 }
 
 .texta {
   display: inline-block;
   width: 95%;
   height: 100%;
-  background-color: white;
   border: none;
-  margin: 5px;
-  font-size: 1.1rem;
-  display: inline-block;
+  margin: 10px;
   outline: none;
   resize: none;
   background-color: transparent;
   font-size: 1.125rem;
+  color: #ffffff;
 }
 
 .btn {
   width: 7rem;
-  color: #5585ff;
-  border: 2px solid #5585ff;
+  color: #3390ec;
+  border: 2px solid #3390ec;
   background-color: transparent;
   cursor: pointer;
   line-height: 2;
@@ -46,11 +53,6 @@
 }
 
 .btn:hover {
-  background-color: #5585ff;
+  background-color: #3390ec;
   color: #ffffff;
-}
-
-.form {
-  display: flex;
-  align-items: center;
 }

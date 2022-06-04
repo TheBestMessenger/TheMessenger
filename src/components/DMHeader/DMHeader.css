@@ -1,6 +1,7 @@
 header {
   height: 10vh;
-  background-color: rgb(255, 255, 255);
+  background-color: #212121;
+  border-color: transparent;
   position: sticky;
   top: 0;
   padding: 1px 3%;
@@ -8,10 +9,9 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-radius: 5%;
-  border-bottom-color: rgb(132, 132, 132);
   border-bottom-style: solid;
   border-bottom-width: 1px;
+  box-shadow: 0 0 10px 10px rgba(16,16,16,0.611765);
   z-index: 2;
 }
 
@@ -35,16 +35,31 @@ a {
 .user-name {
   font-family: 'Roboto', sans-serif;
   font-size: large;
-}
-
-.return {
-  margin-left: 3vh;
-  font-family: 'Roboto', sans-serif;
-  color: rgb(52, 74, 129);
+  font-weight: bold;
+  color: #FFFFFF;
 }
 
 .status {
   margin-top: 1vh;
   font-family: 'Roboto', sans-serif;
-  color: rgb(124, 124, 124);
+  color: #AAAAAA;
+}
+
+.back-to-chats {
+  display: flex;
+  justify-content: center;
+  margin-left: 10px;
+  width: fit-content;
+}
+
+.back-to-chats:hover {
+  background-color: #AAAAAA14;
+  border-radius: 20px;
+}
+
+.return-chats-text {
+  font-family: 'Roboto', sans-serif;
+  color: #AAAAAA;
+  padding: 15px;
+  margin: 0;
 }

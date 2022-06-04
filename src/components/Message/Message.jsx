@@ -8,9 +8,9 @@ const Message = (props) => {
       <>
         <div className={'message out-message'} message_id={message_id}>
           <p className={'message message-text-container'}> {text} </p>
-          <span className={'message message-time'}>
+          <span className={'message message-time message-time-out'}>
             {' '}
-            {`${edited ? 'Edited' : ''} ${time}`}{' '}
+            {`${edited ? 'edited' : ''} ${time}`}{' '}
             <img
               className={'message-tick-icon'}
               src={`/icons/${read ? 'read' : 'delivered'}.svg`}
@@ -25,9 +25,9 @@ const Message = (props) => {
       <>
         <div className={'message in-message'}>
           <p className={'message message-text-container'}> {text} </p>
-          <span className={'message message-time'}>
+          <span className={'message message-time message-time-in'}>
             {' '}
-            {`${edited ? 'Edited' : ''} ${time}`}{' '}
+            {`${edited ? 'edited' : ''} ${time}`}{' '}
           </span>
         </div>
       </>
