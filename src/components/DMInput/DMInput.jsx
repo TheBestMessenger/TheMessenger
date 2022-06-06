@@ -11,6 +11,7 @@ const DMInput = (props) => {
 
     const onEmojiClick = (event, emojiObject) => {
         setChosenEmoji(emojiObject);
+        setMessageText(messageText + emojiObject.emoji)
     };
 
     const handleSubmit = () => {
@@ -25,21 +26,19 @@ const DMInput = (props) => {
         }
     }
 
-    let show = false;
 
-    return (
-        <div className='input'>
+    return (<div className='input'>
             <div className={'picker'}>
-                {show ? <Picker onEmojiClick={onEmojiClick}/> : ''}
+                <Picker onEmojiClick={onEmojiClick}/>
             </div>
             <form className='form' onKeyPress={handleEnter}>
                 <div className='cmd'>
-                    <button className={'emoji-picker-button'} onClick={() => show = !show}>
+                    <button className={'emoji-picker-button'} onClick={() => console.log('click')}>
                         <img className={'emoji-picker-icon'} src={'/icons/emoji-icon.svg'} alt={'emoji-picker icon'}/>
                     </button>
                     <textarea
                         className='texta'
-                        value={messageText} //+ chosenEmoji.emoji
+                        value={messageText}
                         onChange={(e) => setMessageText(e.target.value)}
                     />
                 </div>
@@ -52,8 +51,7 @@ const DMInput = (props) => {
                     {sendText}
                 </button>
             </form>
-        </div>
-    );
+        </div>);
 };
 
 export default DMInput;
