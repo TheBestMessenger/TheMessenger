@@ -14,8 +14,8 @@ const RegisterPage = () => {
             <form className='regForm' method='post'>
                 <DataInput info='Name Surname' path={eyePath} error=''/>
                 <DataInput info='@username' path={eyePath} error=''/>
-                <DataInput info='Password' path={eyePath} error='Password is incorrect'/>
-                <DataInput info='Password Check' path={eyePath} error=''/>
+                <DataInput info='Password' path={eyePath} error=''/>
+                <DataInput info='Password Check' path={eyePath} error='Password is incorrect'/>
                 <SignButton info='SIGN UP'/>
             </form>
         </div>
