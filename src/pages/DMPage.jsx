@@ -12,12 +12,11 @@ import UserContext from '../contexts/UserContext';
 const DMPage = () => {
   const userContext = useContext(UserContext);
   const { chat_id } = useParams();
-  const messages =
-    userContext.chats.length !== 0
-      ? userContext.chats[
-          userContext.chats.findIndex((chat) => chat.chat_id === chat_id)
-        ].messages
-      : [];
+  const currentChat =
+    userContext.chats[
+      userContext.chats.findIndex((chat) => chat.chat_id === chat_id)
+    ];
+  const messages = userContext.chats.length !== 0 ? currentChat.messages : [];
 
   // scrollToBottom
   const messagesEndRef = useRef(null);
@@ -103,8 +102,10 @@ const DMPage = () => {
     <>
       <DMHeader
         goBackLink='/'
-        chatTitle={chat_id}
-        imageLink={'../' + PROFILE_PICTURES_PREFIX + chat_id + '.png'}
+        chatTitle={currentChat.chat_title}
+        imageLink={
+          '../' + PROFILE_PICTURES_PREFIX + currentChat.chat_title + '.png'
+        }
       />
       <div
         style={{ position: 'absolute', top: yPos.current, left: xPos.current }}
