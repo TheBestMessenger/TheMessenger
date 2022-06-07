@@ -2,10 +2,8 @@ import './UserInfo.css';
 import {PROFILE_PICTURES_PREFIX} from '../../config';
 
 const UserInfo = (props) => {
-    const { username, nickname, telephone, photo} = props;
-    return(
-        <>
-        {/* <div className='button-wrapper'> */}
+    const {username, nickname, telephone, photo} = props;
+    return (<>
             <button
                 type='button'
                 id='button'
@@ -16,20 +14,19 @@ const UserInfo = (props) => {
             >
                 <img
                     className='button-image'
-                    src={props.photo}
+                    src={photo}
                     alt={'button'}
                 />
             </button>
-        {/* </div> */}
 
-        <div className='bg-modal'>
+            <div className='bg-modal'>
                 <div className='modal-content'>
                     <img
                         className='image-profile'
-                        src={props.photo}
+                        src={photo}
                         alt={'profile image'}
                     />
-                    <p className='profile-name'> {props.username} </p>
+                    <p className='profile-name'> {username} </p>
                     <p className='online-status'> online </p>
                     <div
                         className='close'
@@ -40,7 +37,7 @@ const UserInfo = (props) => {
                         {''}+{''}
                     </div>
 
-                     <div className='icons_outer'>
+                    <div className='icons_outer'>
                         <div className='icon_inner'>
                             <img
                                 className='imgicon'
@@ -48,7 +45,7 @@ const UserInfo = (props) => {
                                 alt={'image icon'}
                             />
                             <span className='icon_text_left'>Username</span>
-                            <span className='icon_text_right'>{props.nickname}</span>
+                            <span className='icon_text_right'>{nickname}</span>
                         </div>
 
                         <div className='icon_inner'>
@@ -58,7 +55,7 @@ const UserInfo = (props) => {
                                 alt={'image-icon'}
                             />
                             <span className='icon_text_left'>Name</span>
-                            <span className='icon_text_right'>{props.username}</span>
+                            <span className='icon_text_right'>{username}</span>
                         </div>
 
                         <div className='icon_inner'>
@@ -68,13 +65,12 @@ const UserInfo = (props) => {
                                 alt={'image-icon'}
                             />
                             <span className='icon_text_left'>Telephone</span>
-                            <span className='icon_text_right'>{props.telephone}</span>
+                            <span className='icon_text_right'>{telephone}</span>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
-   </>
-    )
+        </>);
 }
 
 
