@@ -1,86 +1,87 @@
 .input {
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  height: 100px;
-  width: 100%;
-  bottom: 0;
-  background-color: #000000;
-  box-shadow: 0 0 10px 2px rgba(16,16,16,0.611765);
-  z-index: 1;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    width: 100%;
+    bottom: 0;
+    background-color: #000000;
+    box-shadow: 0 0 10px 2px rgba(16, 16, 16, 0.611765);
+    z-index: 1;
 }
 
-.picker{
-  position: absolute;
-  bottom: 105px;
-  left: 5%;
+.picker {
+    position: absolute;
+    bottom: 105px;
+    left: 5%;
 }
 
 .form {
-  display: flex;
-  align-items: center;
-  width: 80%;
-  margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    width: 80%;
+    margin-bottom: 20px;
 }
 
 .cmd {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  border-radius: 10px;
-  background-color: #212121;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    background-color: #212121;
 }
 
 .emoji-picker-button {
-  position: absolute;
-  display: contents;
-  width: 25px;
-  height: 25px;
-  bottom: 48%;
-  margin-left: 8px;
-  border: none;
-  background-color: transparent;
+    position: absolute;
+    display: contents;
+    width: 25px;
+    height: 25px;
+    bottom: 48%;
+    margin-left: 12px;
+    border: none;
+    background-color: transparent;
 }
 
 .emoji-picker-icon {
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  bottom: 48%;
-  margin-left: 8px;
-  border: none;
-  background-color: transparent;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    bottom: 48%;
+    margin-left: 12px;
+    border: none;
+    background-color: transparent;
+    border-radius: 50%;
 }
 
 .texta {
-  display: inline-block;
-  width: calc(100% - 40px);
-  height: 100%;
-  border: none;
-  margin: 10px 10px 10px 40px;
-  outline: none;
-  resize: none;
-  background-color: transparent;
-  font-size: 1.125rem;
-  color: #ffffff;
+    display: inline-block;
+    width: calc(100% - 40px);
+    height: 100%;
+    border: none;
+    margin: 10px 10px 10px 50px;
+    outline: none;
+    resize: none;
+    background-color: transparent;
+    font-size: 1.125rem;
+    color: #ffffff;
 }
 
 .btn {
-  width: 7rem;
-  color: #3390ec;
-  border: 2px solid #3390ec;
-  background-color: transparent;
-  cursor: pointer;
-  line-height: 2;
-  border-radius: 1.5rem;
-  font-size: 1.125rem;
-  text-transform: lowercase;
-  outline: none;
-  margin-left: 10px;
-  transition: 0.2s all ease-in-out;
+    width: 7rem;
+    color: #3390ec;
+    border: 2px solid #3390ec;
+    background-color: transparent;
+    cursor: pointer;
+    line-height: 2;
+    border-radius: 1.5rem;
+    font-size: 1.125rem;
+    text-transform: lowercase;
+    outline: none;
+    margin-left: 10px;
+    transition: 0.2s all ease-in-out;
 }
 
 .btn:hover {
-  background-color: #3390ec;
-  color: #ffffff;
+    background-color: #3390ec;
+    color: #ffffff;
 }

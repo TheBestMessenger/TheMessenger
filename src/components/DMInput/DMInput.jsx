@@ -28,30 +28,30 @@ const DMInput = (props) => {
 
 
     return (<div className='input'>
-            <div className={'picker'}>
-                <Picker onEmojiClick={onEmojiClick}/>
-            </div>
-            <form className='form' onKeyPress={handleEnter}>
-                <div className='cmd'>
-                    <button className={'emoji-picker-button'} onClick={() => console.log('click')}>
-                        <img className={'emoji-picker-icon'} src={'/icons/emoji-icon.svg'} alt={'emoji-picker icon'}/>
-                    </button>
-                    <textarea
-                        className='texta'
-                        value={messageText}
-                        onChange={(e) => setMessageText(e.target.value)}
-                    />
-                </div>
-                <button
-                    className='btn'
-                    type='submit'
-                    value='Submit'
-                    onClick={handleSubmit}
-                >
-                    {sendText}
+        <div className={'picker'}>
+            <Picker onEmojiClick={onEmojiClick}/>
+        </div>
+        <form className='form' onKeyPress={handleEnter}>
+            <div className='cmd'>
+                <button className={'emoji-picker-button'} onClick={() => console.log('click')}>
+                    <img className={'emoji-picker-icon'} src={'/icons/emoji.png'} alt={'emoji-picker icon'}/>
                 </button>
-            </form>
-        </div>);
+                <textarea
+                    className='texta'
+                    value={messageText}
+                    onChange={(e) => setMessageText(e.target.value)}
+                />
+            </div>
+            <button
+                className='btn'
+                type='submit'
+                value='Submit'
+                onClick={handleSubmit}
+            >
+                {sendText}
+            </button>
+        </form>
+    </div>);
 };
 
 export default DMInput;
