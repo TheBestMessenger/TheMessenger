@@ -1,4 +1,5 @@
 import './Message.css';
+import Fade from 'react-reveal/Fade';
 
 const Message = (props) => {
   const { text, fromMe, time, edited, message_id } = props;
@@ -6,6 +7,7 @@ const Message = (props) => {
   if (fromMe) {
     return (
       <>
+        <Fade right duration={250}>
         <div className={'message out-message'} message_id={message_id}>
           <p className={'message message-text-container'}> {text} </p>
           <span className={'message message-time message-time-out'}>
@@ -18,18 +20,21 @@ const Message = (props) => {
             />{' '}
           </span>
         </div>
+        </Fade>
+
       </>
     );
   } else {
     return (
       <>
+      <Fade left duration={250}>
         <div className={'message in-message'}>
           <p className={'message message-text-container'}> {text} </p>
           <span className={'message message-time message-time-in'}>
             {' '}
             {`${edited ? 'edited' : ''} ${time}`}{' '}
           </span>
-        </div>
+        </div></Fade>
       </>
     );
   }
