@@ -1,19 +1,21 @@
-.sign-input {
+.sign-input, .sign-input-pass {
     height: 6vh;
+    display: flex;
+    flex-direction: row;
     width: 100%;
     border: 2px solid #adadad;
     border-radius: 1vh;
     margin-top: 4vh;
-    transition: all 0.5s;
+    transition: all 0.2s;
   }
   
-  .sign-input:hover {
+  .sign-input:hover, .sign-input-pass:hover {
     border-color: rgb(73, 154, 234);
   }
   
-  .sign-input input {
+.sign-input input, .sign-input-err input{
     height: 6vh;
-    width: 100%;
+    width: 90%;
     border: none;
     background: none;
     outline: none;
@@ -22,27 +24,95 @@
     margin-left: 2vh;
     color: #ffffff;
   }
-  
-  .sign-input input ~ .sign-label {
+
+  .sign-input-pass input, .sign-input-pass-err input {
+    height: 6vh;
+    width: 70%;
+    border: none;
+    background: none;
+    outline: none;
+    font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif;
+    font-size: 2vh;
+    margin-left: 2vh;
+    color: #ffffff;
+  }
+
+  .sign-input input ~ .sign-label,
+  .sign-input-pass input ~ .sign-label {
     position: absolute;
     color: #adadad;
-    transform: translateY(-80%);
+    transform: translateY(+130%);
     pointer-events: none;
     font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif;
     margin-left: 2vh;
+    font-size: 2vh;
     transition: 0.2s ease all;
   }
   
-  .sign-input input ~ .sign-label {
-    margin-block-start: -19px;
-  }
+  /* .sign-input input ~ .sign-label,
+  .sign-input-pass input ~ .sign-label {
+    font-size: 2vh;
+  } */
   
-  .sign-input input:hover ~ .sign-label {
+  .sign-input input:hover ~ .sign-label,
+  .sign-input-pass input:hover ~ .sign-label {
     color: rgb(73, 154, 234);
   }
   
   .sign-input input:focus ~ .sign-label, 
   .sign-input input:valid ~ .sign-label {
+    transform: translateY(-140%);
     color: rgb(73, 154, 234);
   }
-  
+
+  .sign-input-pass input:focus ~ .sign-label, 
+  .sign-input-pass input:valid ~ .sign-label {
+    transform: translateY(-140%);
+    color: rgb(73, 154, 234);
+  }
+
+  .sign-input-err input:focus ~ .sign-label, 
+  .sign-input-err input:valid ~ .sign-label {
+    transform: translateY(-140%);
+  }
+
+  .sign-input-pass-err input:focus ~ .sign-label, 
+  .sign-input-pass-err input:valid ~ .sign-label {
+    transform: translateY(-140%);
+  }
+
+  .show-button {
+    border: none;
+    background: none;
+    outline: none;
+    height: 6vh;
+    margin-left: 2vh;
+    transition: 0.2s ease all;
+  }
+
+.sign-input-err,  .sign-input-pass-err{
+    height: 6vh;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border: 2px solid #c01a1a;
+    border-radius: 1vh;
+    margin-top: 4vh;
+    transition: all 0.2s;
+}
+
+.sign-input-err input ~ .sign-label,
+.sign-input-pass-err input ~ .sign-label {
+    position: absolute;
+    color: #c01a1a;
+    transform: translateY(+130%);
+    pointer-events: none;
+    font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif;
+    margin-left: 2vh;
+    font-size: 2vh;
+    transition: 0.2s ease all;
+  }
+
+.error-msg {
+    color: #c01a1a;
+}
