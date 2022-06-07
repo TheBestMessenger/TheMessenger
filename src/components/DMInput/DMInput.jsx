@@ -12,7 +12,7 @@ const DMInput = (props) => {
 
     document.addEventListener('mousedown', (e) => {
         if (showEmoji && (e.target.className === 'message-container' || e.target.className === 'texta'
-                            || e.target.className === 'input')) {
+            || e.target.className === 'input')) {
             setShowEmoji(!showEmoji);
         }
     });

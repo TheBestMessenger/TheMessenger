@@ -20,8 +20,7 @@ const DMPage = () => {
                 userContext.chats.findIndex((chat) => chat.chat_id === chat_id)
                 ].messages
             : [];
-
-    // scrollToBottom
+    
     const messagesEndRef = useRef(null);
     const scrollToBottom = () => {
         messagesEndRef.current.scrollIntoView({behavior: 'smooth'});
