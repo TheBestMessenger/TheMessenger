@@ -7,14 +7,12 @@ const LoginPage = () => {
         <img className='logo-img' src='/logo512.png' alt='logo' />
         <span className='sign-in'>Sign in to Telegram</span>
         <div className='subtitle'>
-          <span className='info'>
-            Please enter your phone number and password.
-          </span>
+          <span className='info'>Please enter your username and password.</span>
         </div>
         <form className='sign-in' method='post'>
           <div className='phone-num'>
             <input type='text' id='phone' required />
-            <label className='label-login'>Phone number</label>
+            <label className='label-login'>Username</label>
           </div>
           <div className='password'>
             <input type='password' id='password' required />
