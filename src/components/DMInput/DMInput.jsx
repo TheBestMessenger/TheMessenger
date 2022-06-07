@@ -10,6 +10,12 @@ const DMInput = (props) => {
     const [chosenEmoji, setChosenEmoji] = useState(null);
     const [showEmoji, setShowEmoji] = useState(false);
 
+    document.addEventListener('mousedown', (e) => {
+        if (showEmoji && (e.target.className === 'message-container' || e.target.className === 'texta'
+                            || e.target.className === 'input')) {
+            setShowEmoji(!showEmoji);
+        }
+    });
 
     const onEmojiClick = (event, emojiObject) => {
         setChosenEmoji(emojiObject);
