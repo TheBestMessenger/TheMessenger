@@ -92,9 +92,9 @@ const ChatsPage = () => {
               imageLink={PROFILE_PICTURES_PREFIX + chat.chat_title + '.png'}
               lastMessage={
                 chat.messages[chat.messages.length - 1].msg.slice(0, 50) +
-                (chat.messages[chat.messages.length - 1].msg.length > 50)
+                (chat.messages[chat.messages.length - 1].msg.length > 50
                   ? '...'
-                  : ''
+                  : '')
               }
               time={chat.messages[chat.messages.length - 1].time.slice(0, 50)}
             />
