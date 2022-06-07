@@ -10,7 +10,7 @@
   position: relative;
   box-sizing: border-box;
   word-wrap: break-word;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .in-message {
@@ -18,7 +18,7 @@
   border-radius: 0.75rem 0.75rem 0.75rem 0;
   margin-right: calc(100% - 100px);
   align-self: flex-start;
-  box-shadow: 0 0 5px 5px rgba(16,16,16,0.611765);
+  box-shadow: 0 0 5px 5px rgba(16, 16, 16, 0.611765);
 }
 
 .out-message {
@@ -26,7 +26,7 @@
   border-radius: 0.75rem 0.75rem 0 0.75rem;
   margin-left: calc(100% - 100px);
   align-self: flex-end;
-  box-shadow: 0 0 5px 5px rgba(16,16,16,0.611765);
+  box-shadow: 0 0 5px 5px rgba(16, 16, 16, 0.611765);
 }
 
 .message-text-container {
@@ -45,16 +45,16 @@
   bottom: 3px;
   font-size: 12px;
   align-items: center;
-  color: #686C72BF;
-  font-family: "Roboto", sans-serif;
+  color: #686c72bf;
+  font-family: 'Roboto', sans-serif;
 }
 
 .message-time-in {
-  color: #686C72BF;
+  color: #686c72bf;
 }
 
 .message-time-out {
-  color: #FFFFFF88;
+  color: #ffffff88;
 }
 
 .message-tick-icon {

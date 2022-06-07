@@ -11,7 +11,7 @@ header {
   align-items: center;
   border-bottom-style: solid;
   border-bottom-width: 1px;
-  box-shadow: 0 0 10px 10px rgba(16,16,16,0.611765);
+  box-shadow: 0 0 10px 10px rgba(16, 16, 16, 0.611765);
   z-index: 2;
 }
 
@@ -36,13 +36,13 @@ a {
   font-family: 'Roboto', sans-serif;
   font-size: large;
   font-weight: bold;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .status {
   margin-top: 1vh;
   font-family: 'Roboto', sans-serif;
-  color: #AAAAAA;
+  color: #aaaaaa;
 }
 
 .back-to-chats {
@@ -53,13 +53,13 @@ a {
 }
 
 .back-to-chats:hover {
-  background-color: #AAAAAA14;
+  background-color: #aaaaaa14;
   border-radius: 20px;
 }
 
 .return-chats-text {
   font-family: 'Roboto', sans-serif;
-  color: #AAAAAA;
+  color: #aaaaaa;
   padding: 15px;
   margin: 0;
 }
