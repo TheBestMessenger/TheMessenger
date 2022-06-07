@@ -1,36 +1,25 @@
 import './Register.css';
+import SignButton from '../components/LoginReg/SignButton';
+import DataInput from '../components/LoginReg/DataInput';
+import Subtitle from '../components/LoginReg/Subtitle';
+import Logo from '../components/LoginReg/Logo';
 
-const Register = () => {
+const RegisterPage = () => {
   return (
     <>
-      <div className='logo'>
-        <img className='logo-img' src='/logo512.png' alt='logo' />
-        <span className='sign-up-text'>Sign up in Telegram</span>
-        <div className='subtitle'>
-          <span className='info'>
-            Please enter your phone number and password.
-          </span>
+        <div class='logo'>
+            <Logo path='/logo512.png' text='Sign up to Telegram'/>
+            <Subtitle text='Please enter info about you.'/>
+            <form method='post'>
+                <DataInput info='Name Surname'/>
+                <DataInput info='@username'/>
+                <DataInput info='Password'/>
+                <DataInput info='Password Check'/>
+                <SignButton info='SIGN UP'/>
+            </form>
         </div>
-        <form className='sign-up' method='post'>
-          <div className='phone-num'>
-            <input type='text' id='phone' required />
-            <label>Phone number</label>
-          </div>
-          <div className='password'>
-            <input type='password' id='password' required />
-            <label>Password</label>
-          </div>
-          <div className='password-check'>
-            <input type='password' id='password-check' required />
-            <label>Confirm Password</label>
-          </div>
-          <button className='sign-up-button' type='button'>
-            SIGN UP
-          </button>
-        </form>
-      </div>
     </>
   );
 };
 
-export default Register;
+export default RegisterPage;

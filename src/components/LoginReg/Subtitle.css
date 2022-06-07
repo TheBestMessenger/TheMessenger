@@ -1,0 +1,14 @@
+.subtitle {
+    font-weight: normal;
+    font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif;
+    font-size: 2vh;
+    width: 30vh;
+    text-align: center;
+    margin-top: 3vh;
+    line-height: 130%;
+  }
+
+.info {
+    color: rgb(144, 144, 144);
+}
+  

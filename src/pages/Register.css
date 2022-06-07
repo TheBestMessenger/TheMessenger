@@ -1,140 +1,141 @@
 .logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.logo-img {
-  height: 20vh;
-  margin-top: 5vh;
-}
-
-.sign-up-text {
-  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif;
-  font-size: 4vh;
-  margin-top: 5vh;
-  font-weight: 500;
-  color: #ffffff;
-}
-
-.subtitle {
-  font-weight: normal;
-  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif;
-  font-size: 2vh;
-  width: 30vh;
-  text-align: center;
-  margin-top: 2vh;
-  line-height: 130%;
-}
-
-.info {
-  color: rgb(144, 144, 144);
-}
-
-.sign-up-button {
-  height: 6vh;
-  width: 44vh;
-  border-radius: 1vh;
-  background-color: rgb(73, 154, 234);
-  border-style: hidden;
-  font-size: 2vh;
-  color: #ffffff;
-  margin-top: 5vh;
-  transition: all 0.3s linear;
-}
-
-.sign-up-button:hover {
-  background-color: rgb(42, 86, 181);
-}
-
-.sign-up {
-  width: 44vh;
-  margin-top: 1vh;
-}
-.phone-num,
-.password,
-.password-check {
-  height: 6vh;
-  width: 100%;
-  border: 2px solid #adadad;
-  border-radius: 1vh;
-  margin-top: 4vh;
-  transition: all 0.5s;
-}
-
-.phone-num:hover,
-.password:hover,
-.password-check:hover {
-  border-color: rgb(73, 154, 234);
-}
-
-.phone-num input,
-.password input,
-.password-check input {
-  height: 6vh;
-  width: 100%;
-  border: none;
-  background: none;
-  outline: none;
-  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif;
-  font-size: 2vh;
-  margin-left: 2vh;
-  color: #ffffff;
-}
-
-.phone-num input ~ label,
-.password input ~ label,
-.password-check input ~ label {
-  position: absolute;
-  color: #adadad;
-  transform: translateY(-100%);
-  pointer-events: none;
-  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif;
-  margin-left: 2vh;
-  transition: 0.2s ease all;
-}
-
-.phone-num input ~ label {
-  top: 54vh;
-  font-size: 2vh;
-}
-
-.password input ~ label {
-  top: 64.5vh;
-  font-size: 2vh;
-}
-
-.password-check input ~ label {
-  top: 75vh;
-  font-size: 2vh;
-}
-
-.phone-num input:hover ~ label {
-  color: rgb(73, 154, 234);
-}
-
-.password input:hover ~ label {
-  color: rgb(73, 154, 234);
-}
-
-.password-check input:hover ~ label {
-  color: rgb(73, 154, 234);
-}
-
-.phone-num input:focus ~ label,
-.phone-num input:valid ~ label {
-  top: 48vh;
-  color: rgb(73, 154, 234);
-}
-
-.password input:focus ~ label,
-.password input:valid ~ label {
-  top: 58.5vh;
-  color: rgb(73, 154, 234);
-}
-
-.password-check input:focus ~ label,
-.password-check input:valid ~ label {
-  top: 69vh;
-  color: rgb(73, 154, 234);
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .logo-img {
+    height: 20vh;
+    margin-top: 5vh;
+  }
+  
+  .sign-up-text {
+    font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif;
+    font-size: 4vh;
+    margin-top: 5vh;
+    font-weight: 500;
+    color: #ffffff;
+  }
+  
+  .subtitle {
+    font-weight: normal;
+    font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif;
+    font-size: 2vh;
+    width: 30vh;
+    text-align: center;
+    margin-top: 2vh;
+    line-height: 130%;
+  }
+  
+  .info {
+    color: rgb(144, 144, 144);
+  }
+  
+  .sign-up-button {
+    height: 6vh;
+    width: 44vh;
+    border-radius: 1vh;
+    background-color: rgb(73, 154, 234);
+    border-style: hidden;
+    font-size: 2vh;
+    color: #ffffff;
+    margin-top: 5vh;
+    transition: all 0.3s linear;
+  }
+  
+  .sign-up-button:hover {
+    background-color: rgb(42, 86, 181);
+  }
+  
+  .sign-up {
+    width: 44vh;
+    margin-top: 1vh;
+  }
+  .phone-num,
+  .password,
+  .password-check {
+    height: 6vh;
+    width: 100%;
+    border: 2px solid #adadad;
+    border-radius: 1vh;
+    margin-top: 4vh;
+    transition: all 0.5s;
+  }
+  
+  .phone-num:hover,
+  .password:hover,
+  .password-check:hover {
+    border-color: rgb(73, 154, 234);
+  }
+  
+  .phone-num input,
+  .password input,
+  .password-check input {
+    height: 6vh;
+    width: 100%;
+    border: none;
+    background: none;
+    outline: none;
+    font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif;
+    font-size: 2vh;
+    margin-left: 2vh;
+    color: #ffffff;
+  }
+  
+  .phone-num input ~ label,
+  .password input ~ label,
+  .password-check input ~ label {
+    position: absolute;
+    color: #adadad;
+    transform: translateY(-100%);
+    pointer-events: none;
+    font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif;
+    margin-left: 2vh;
+    transition: 0.2s ease all;
+  }
+  
+  .phone-num input ~ label {
+    top: 54vh;
+    font-size: 2vh;
+  }
+  
+  .password input ~ label {
+    top: 64.5vh;
+    font-size: 2vh;
+  }
+  
+  .password-check input ~ label {
+    top: 75vh;
+    font-size: 2vh;
+  }
+  
+  .phone-num input:hover ~ label {
+    color: rgb(73, 154, 234);
+  }
+  
+  .password input:hover ~ label {
+    color: rgb(73, 154, 234);
+  }
+  
+  .password-check input:hover ~ label {
+    color: rgb(73, 154, 234);
+  }
+  
+  .phone-num input:focus ~ label,
+  .phone-num input:valid ~ label {
+    top: 48vh;
+    color: rgb(73, 154, 234);
+  }
+  
+  .password input:focus ~ label,
+  .password input:valid ~ label {
+    top: 58.5vh;
+    color: rgb(73, 154, 234);
+  }
+  
+  .password-check input:focus ~ label,
+  .password-check input:valid ~ label {
+    top: 69vh;
+    color: rgb(73, 154, 234);
+  }
+  

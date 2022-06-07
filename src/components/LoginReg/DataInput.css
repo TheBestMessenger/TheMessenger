@@ -1,0 +1,48 @@
+.sign-input {
+    height: 6vh;
+    width: 100%;
+    border: 2px solid #adadad;
+    border-radius: 1vh;
+    margin-top: 4vh;
+    transition: all 0.5s;
+  }
+  
+  .sign-input:hover {
+    border-color: rgb(73, 154, 234);
+  }
+  
+  .sign-input input {
+    height: 6vh;
+    width: 100%;
+    border: none;
+    background: none;
+    outline: none;
+    font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif;
+    font-size: 2vh;
+    margin-left: 2vh;
+    color: #ffffff;
+  }
+  
+  .sign-input input ~ .sign-label {
+    position: absolute;
+    color: #adadad;
+    transform: translateY(-80%);
+    pointer-events: none;
+    font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif;
+    margin-left: 2vh;
+    transition: 0.2s ease all;
+  }
+  
+  .sign-input input ~ .sign-label {
+    margin-block-start: -19px;
+  }
+  
+  .sign-input input:hover ~ .sign-label {
+    color: rgb(73, 154, 234);
+  }
+  
+  .sign-input input:focus ~ .sign-label, 
+  .sign-input input:valid ~ .sign-label {
+    color: rgb(73, 154, 234);
+  }
+  
