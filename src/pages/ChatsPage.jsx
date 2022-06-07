@@ -7,6 +7,11 @@ import {useContext} from 'react';
 
 const ChatsPage = () => {
     const userContext = useContext(UserContext);
+    window.addEventListener('mousedown', (event) => {
+        if (event.target.classList.contains('bg-modal')) {
+            document.querySelector('.bg-modal').style.display = 'none';
+        }
+    });
 
     return (
         <>
