@@ -8,6 +8,8 @@ import DMInput from '../components/DMInput/DMInput';
 import Message from '../components/Message/Message';
 import ContextMenu from '../components/Message/ContextMenu';
 import UserContext from '../contexts/UserContext';
+import UserInfo from '../components/UserInfo/UserInfo';
+
 
 const DMPage = () => {
   const userContext = useContext(UserContext);
@@ -101,11 +103,12 @@ const DMPage = () => {
 
   return (
     <>
+    
       <DMHeader
         goBackLink='/'
         chatTitle={chat_id}
         imageLink={'../' + PROFILE_PICTURES_PREFIX + chat_id + '.png'}
-      />
+        />
       <div
         style={{ position: 'absolute', top: yPos.current, left: xPos.current }}
         ref={menuRef}
