@@ -1,0 +1,13 @@
+.logo-img {
+    height: 20vh;
+    margin-top: 4vh;
+  }
+  
+  .sign {
+    font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif;
+    font-size: 4vh;
+    margin-top: 4vh;
+    font-weight: 500;
+    width: fit-content;
+    color: #ffffff;
+  }
