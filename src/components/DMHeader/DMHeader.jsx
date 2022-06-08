@@ -4,7 +4,7 @@ import UserInfo from '../UserInfo/UserInfo';
 import { Link } from 'react-router-dom';
 
 const DMHeader = (props) => {
-  const { goBackLink, imageLink, chatTitle } = props;
+  const { goBackLink, chatTitle } = props;
   return (
     <header className='header'>
       <Link className={'back-to-chats'} to={goBackLink}>
@@ -15,9 +15,9 @@ const DMHeader = (props) => {
         <span className='status'>last seen recently</span>
       </div>
       <UserInfo
-        username={props.chatTitle}
-        nickname='12378623'
-        telephone='38081239123'
+        username={props.chatUsername}
+        nickname={props.chatTitle}
+        telephone='+380681234567'
         photo={props.imageLink}
       />
     </header>

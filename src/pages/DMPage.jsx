@@ -61,6 +61,8 @@ const DMPage = () => {
   }, [chatInd]);
 
   const chatTitle = chatInd >= 0 ? userContext.chats[chatInd].chat_title : '';
+  const chatUsername =
+    chatInd >= 0 ? userContext.chats[chatInd].chat_username : '';
   const chatId = chatInd >= 0 ? userContext.chats[chatInd].chat_id : '';
   const messages = chatInd >= 0 ? userContext.chats[chatInd].messages : [];
 
@@ -210,7 +212,12 @@ const DMPage = () => {
 
   return (
     <>
-      <DMHeader goBackLink='/' chatTitle={chatTitle} imageLink={chatImage} />
+      <DMHeader
+        goBackLink='/'
+        chatTitle={chatTitle}
+        chatUsername={chatUsername}
+        imageLink={chatImage}
+      />
       <div
         style={{ position: 'absolute', top: yPos.current, left: xPos.current }}
         ref={menuRef}
