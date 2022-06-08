@@ -1,6 +1,6 @@
 import './DMPage.css';
 import { useRef, useEffect, useContext, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 import { BACKEND_SERVER_ROOT, PROFILE_PICTURES_PREFIX } from '../config';
 
 import DMHeader from '../components/DMHeader/DMHeader';
@@ -14,18 +14,55 @@ const DMPage = () => {
   const editLoadingRef = useRef(false);
   const deleteLoadingRef = useRef(false);
   const userContext = useContext(UserContext);
+
+  if (userContext.device_id === '') return <Navigate to='/login' />;
+
   const { chat_username } = useParams();
-  const chatInd = userContext.chats.findIndex(
-    (chat) => chat.chat_username === chat_username
-  );
+  const [chatInd, setChatInd] = useState(-2);
 
-  if (chatInd === -1) {
-    // TODO: create chat request goes here
-  }
+  useEffect(() => {
+    setChatInd(
+      userContext.chats.findIndex(
+        (chat) => chat.chat_username === chat_username
+      )
+    );
+  });
 
-  const chatTitle = userContext.chats[chatInd].chat_title;
-  const chatId = userContext.chats[chatInd].chat_id;
-  const messages = userContext.chats[chatInd].messages;
+  const createChatLoadingRef = useRef(false);
+  useEffect(() => {
+    if (chatInd !== -1) return;
+    if (userContext.device_id === '') return;
+    if (createChatLoadingRef.current) return;
+    createChatLoadingRef.current = true;
+    fetch(BACKEND_SERVER_ROOT + '/createChat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        device_id: userContext.device_id,
+        receiver_username: chat_username,
+      }),
+    })
+      .then(async (response) => {
+        createChatLoadingRef.current = false;
+        try {
+          if (response.status === 400) {
+            const errorText = await response.json();
+            console.log('Unhandled 400 error');
+            console.log(errorText);
+          }
+        } catch (error) {
+          console.log('Unhandled 400 error json parse error');
+          console.log(error);
+        }
+      })
+      .catch(() => {
+        createChatLoadingRef.current = false;
+      });
+  }, [chatInd]);
+
+  const chatTitle = chatInd >= 0 ? userContext.chats[chatInd].chat_title : '';
+  const chatId = chatInd >= 0 ? userContext.chats[chatInd].chat_id : '';
+  const messages = chatInd >= 0 ? userContext.chats[chatInd].messages : [];
 
   const messagesEndRef = useRef(null);
   const scrollToBottom = () => {

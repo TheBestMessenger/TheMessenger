@@ -38,11 +38,16 @@ const ChatsPage = () => {
               chatTitle={chat.chat_title}
               dmLink={'dm/' + chat.chat_username}
               imageLink={PROFILE_PICTURES_PREFIX + chat.chat_username + '.png'}
-              lastMessage={chat.messages[chat.messages.length - 1].msg.slice(
-                0,
-                50
-              )}
-              time={chat.messages[chat.messages.length - 1].time.slice(0, 50)}
+              lastMessage={
+                chat.messages.length > 0
+                  ? chat.messages[chat.messages.length - 1].msg.slice(0, 50)
+                  : 'Empty Chat'
+              }
+              time={
+                chat.messages.length > 0
+                  ? chat.messages[chat.messages.length - 1].time
+                  : ''
+              }
             />
           ))
         ) : (

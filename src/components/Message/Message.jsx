@@ -6,11 +6,15 @@ const reactStringReplace = require('react-string-replace');
 const Message = (props) => {
   const { text, fromMe, time, edited, message_id } = props;
 
-  const taggedText = reactStringReplace(text, /(@[a-zA-Z_]+)/g, (match, i) => (
-    <Link key={i} to={`/dm/${match.slice(1)}`} className='link-color'>
-      {match}
-    </Link>
-  ));
+  const taggedText = reactStringReplace(
+    text,
+    /(@[a-zA-Z_0-9]+)/g,
+    (match, i) => (
+      <Link key={i} to={`/dm/${match.slice(1)}`} className='link-color'>
+        {match}
+      </Link>
+    )
+  );
 
   let read = false;
   if (fromMe) {
