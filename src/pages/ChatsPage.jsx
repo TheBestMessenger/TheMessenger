@@ -19,7 +19,7 @@ const ChatsPage = () => {
     <div className='el'>
         <h1 className='chats-logo'>Chats</h1>
         <div className='wrapper'>
-        <UserInfo username = "Apollo" nickname = "@qwerty" telephone = "3809997126" photo = {PROFILE_PICTURES_PREFIX+'Apollo.png'}></UserInfo>
+        <UserInfo username = "Apollo" nickname = "@qwerty" telephone = "3809997126" photo = {PROFILE_PICTURES_PREFIX+'Apollo.png'} edit = {true}></UserInfo>
         </div>
     </div>        
             <div className={'chats-container'}>
