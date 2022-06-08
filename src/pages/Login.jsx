@@ -3,10 +3,10 @@ import SignButton from '../components/LoginReg/SignButton';
 import DataInput from '../components/LoginReg/DataInput';
 import Subtitle from '../components/LoginReg/Subtitle';
 import UserContext from '../contexts/UserContext';
+import { Navigate, Link } from 'react-router-dom';
 import { BACKEND_SERVER_ROOT } from '../config';
 import Logo from '../components/LoginReg/Logo';
 import { useContext, useState } from 'react';
-import { Navigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
 const LoginPage = () => {
@@ -21,6 +21,16 @@ const LoginPage = () => {
   const [passwordError, setPasswordError] = useState('');
 
   const handleSubmit = () => {
+    setUsernameError('');
+    setPasswordError('');
+    if (username === '') {
+      setUsernameError('Username empty');
+      return;
+    }
+    if (password === '') {
+      setPasswordError('Password empty');
+      return;
+    }
     const device_id = uuidv4();
     fetch(BACKEND_SERVER_ROOT + 'login', {
       method: 'POST',
@@ -34,8 +44,6 @@ const LoginPage = () => {
     })
       .then(async (response) => {
         if (response.status === 200) {
-          setUsernameError('');
-          setPasswordError('');
           updateDeviceId(device_id);
           setRedirectToRoot(true);
         } else if (response.status === 400) {
@@ -43,9 +51,7 @@ const LoginPage = () => {
             const errorText = (await response.json()).error;
             if (errorText === 'Username does not exist') {
               setUsernameError(errorText);
-              setPasswordError('');
             } else {
-              setUsernameError('');
               setPasswordError(errorText);
             }
           } catch (error) {
@@ -86,7 +92,9 @@ const LoginPage = () => {
           <SignButton info='SIGN IN' onClick={handleSubmit} />
         </form>
         <Subtitle text="Don't have account yet?" error={0} />
-        <SignButton info='SIGN UP' />
+        <Link to='/register'>
+          <SignButton info='SIGN UP' />
+        </Link>
       </div>
     </>
   );
