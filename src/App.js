@@ -1,5 +1,4 @@
 import './App.css';
-import { v4 as uuidv4 } from 'uuid';
 import DMPage from './pages/DMPage';
 import ChatsPage from './pages/ChatsPage';
 import ErrorNotFound from './pages/ErrorNotFound';
@@ -13,16 +12,24 @@ import Register from './pages/Register';
 function App() {
   const deviceIdRef = useRef('');
   const lastVersionRef = useRef(0);
+  const loadingRef = useRef(false);
+  const chatsRef = useRef([]);
   const [userInfo, setUserInfo] = useState({ chats: [], device_id: '' });
 
   const updateDeviceId = (device_id) => {
     deviceIdRef.current = device_id;
+    setUserInfo({ ...userInfo, device_id: device_id });
   };
 
   useEffect(() => {
     // fetch messages periodically
     const fetcher = () => {
-      if (deviceIdRef.current === '') return;
+      if (loadingRef.current) return;
+      loadingRef.current = true;
+      if (deviceIdRef.current === '') {
+        loadingRef.current = false;
+        return;
+      }
       fetch(BACKEND_SERVER_ROOT + 'getChats', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -31,13 +38,27 @@ function App() {
           lastVersion: lastVersionRef.current,
         }),
       })
-        .then((response) => response.json())
+        .then((response) => {
+          if (response.status === 200) return response.json();
+          (async () => {
+            try {
+              console.log('Response error: ' + (await response.json()).error);
+            } catch (error) {
+              console.log('Error response decode error: ', error);
+            }
+          })();
+        })
         .catch((err) => {
+          loadingRef.current = false;
           console.log('Message fetching error: ', err);
         })
         .then((data) => {
+          if (!data) {
+            loadingRef.current = false;
+            return;
+          }
           lastVersionRef.current = data.version;
-          const chatsNew = userInfo.chats.concat(data.delta);
+          const chatsNew = chatsRef.current.concat(data.delta);
           const getIndexes = (chat_id, message_id) => {
             const chatInd = chatsNew.findIndex(
               (chat) => chat.chat_id === chat_id
@@ -62,13 +83,16 @@ function App() {
               }
             } catch (_) {}
           }
+          chatsRef.current = chatsNew;
           setUserInfo({
             ...userInfo,
             chats: chatsNew,
           });
+          loadingRef.current = false;
         })
         .catch((err) => {
           console.log('Message fetching error (response unpack): ', err);
+          loadingRef.current = false;
         });
     };
     fetcher();
@@ -79,7 +103,9 @@ function App() {
   }, []);
 
   return (
-    <UserContext.Provider value={{ ...userInfo, updateDeviceId }}>
+    <UserContext.Provider
+      value={{ ...userInfo, updateDeviceId, device_id: deviceIdRef.current }}
+    >
       <Router>
         <Routes>
           <Route path='/login' element={<Login />} />
