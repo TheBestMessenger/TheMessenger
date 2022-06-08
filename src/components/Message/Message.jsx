@@ -7,18 +7,10 @@ const Message = (props) => {
   const { text, fromMe, time, edited, message_id } = props;
 
   const taggedText = reactStringReplace(text, /(@[a-zA-Z_]+)/g, (match, i) => (
-    <Link key={i} to='/dm/Apollo' style={{ display: 'inline-block' }}>
+    <Link key={i} to={`/dm/${match.slice(1)}`}>
       {match}
     </Link>
   ));
-
-  for (let i = 0; i < taggedText.length; i++) {
-    if (typeof taggedText[i] === 'string') {
-      taggedText[i] = (
-        <span style={{ display: 'inline-block' }}>{taggedText[i]}</span>
-      );
-    }
-  }
 
   let read = false;
   if (fromMe) {
