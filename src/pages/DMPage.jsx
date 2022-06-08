@@ -200,17 +200,17 @@ const DMPage = () => {
       });
   };
 
+  const [chatImage, setChatImage] = useState(
+    'https://messenger-storage.s3.amazonaws.com/default/blank-profile-picture.png'
+  );
+
   const messageToEdit = Array.isArray(messages)
     ? messages.find((it) => it.message_id === cmMessageId.current)
     : 0;
 
   return (
     <>
-      <DMHeader
-        goBackLink='/'
-        chatTitle={chatTitle}
-        imageLink={'../' + PROFILE_PICTURES_PREFIX + chat_username + '.png'}
-      />
+      <DMHeader goBackLink='/' chatTitle={chatTitle} imageLink={chatImage} />
       <div
         style={{ position: 'absolute', top: yPos.current, left: xPos.current }}
         ref={menuRef}

@@ -15,9 +15,12 @@ const ChatsPage = () => {
     }
   });
 
-  const [userName, setUserName] = useState('Apollo');
-  const [nickname, setNickname] = useState('@qwerty');
+  const [userName, setUserName] = useState('Loading...');
+  const [nickname, setNickname] = useState('Loading...');
   const [userPhone, setUserPhone] = useState('+38012345678');
+  const [photo, setPhoto] = useState(
+    'https://messenger-storage.s3.amazonaws.com/default/blank-profile-picture.png'
+  );
 
   if (userContext.device_id === '') return <Navigate to='/login' />;
 
@@ -30,7 +33,7 @@ const ChatsPage = () => {
             username={userName}
             nickname={nickname}
             telephone={userPhone}
-            photo={PROFILE_PICTURES_PREFIX + 'Apollo.png'}
+            photo={photo}
             edit={true}
             setUserName={setUserName}
             setNickname={setNickname}
@@ -45,7 +48,9 @@ const ChatsPage = () => {
               key={chat.chat_id}
               chatTitle={chat.chat_title}
               dmLink={'dm/' + chat.chat_username}
-              imageLink={PROFILE_PICTURES_PREFIX + chat.chat_username + '.png'}
+              imageLink={
+                'https://messenger-storage.s3.amazonaws.com/default/blank-profile-picture.png'
+              }
               lastMessage={
                 chat.messages.length > 0
                   ? chat.messages[chat.messages.length - 1].msg.slice(0, 50)
