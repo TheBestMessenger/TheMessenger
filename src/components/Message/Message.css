@@ -13,6 +13,10 @@
   color: #ffffff;
 }
 
+.link-color {
+  color: violet;
+}
+
 .in-message {
   background-color: #212121;
   border-radius: 0.75rem 0.75rem 0.75rem 0;
