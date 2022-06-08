@@ -1,7 +1,7 @@
 import './DMPage.css';
 import { useRef, useEffect, useContext, useState } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
-import { BACKEND_SERVER_ROOT, PROFILE_PICTURES_PREFIX } from '../config';
+import { BACKEND_SERVER_ROOT } from '../config';
 
 import DMHeader from '../components/DMHeader/DMHeader';
 import DMInput from '../components/DMInput/DMInput';

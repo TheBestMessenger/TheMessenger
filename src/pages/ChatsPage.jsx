@@ -1,9 +1,9 @@
 import './ChatsPage.css';
 
 import ChatTile from '../components/ChatTile/ChatTile';
-import { PROFILE_PICTURES_PREFIX } from '../config';
 import UserContext from '../contexts/UserContext';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect, useRef } from 'react';
+import { BACKEND_SERVER_ROOT } from '../config';
 import { Navigate } from 'react-router-dom';
 import UserInfo from '../components/UserInfo/UserInfo';
 
@@ -21,6 +21,41 @@ const ChatsPage = () => {
   const [photo, setPhoto] = useState(
     'https://messenger-storage.s3.amazonaws.com/default/blank-profile-picture.png'
   );
+
+  const profileInfoLoadingRef = useRef(false);
+  useEffect(() => {
+    if (userContext.device_id === '') return;
+    if (profileInfoLoadingRef.current) return;
+    profileInfoLoadingRef.current = true;
+    fetch(BACKEND_SERVER_ROOT + '/getProfile', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        device_id: userContext.device_id,
+      }),
+    })
+      .then(async (response) => {
+        profileInfoLoadingRef.current = false;
+        try {
+          if (response.status === 200) {
+            const profileMeta = await response.json();
+            setUserName(profileMeta.name);
+            setNickname(profileMeta.username);
+            setPhoto(profileMeta.profile_picture);
+          } else if (response.status === 400) {
+            const errorText = await response.json();
+            console.log('Unhandled 400 error');
+            console.log(errorText);
+          }
+        } catch (error) {
+          console.log('Json parse error');
+          console.log(error);
+        }
+      })
+      .catch(() => {
+        profileInfoLoadingRef.current = false;
+      });
+  }, []);
 
   if (userContext.device_id === '') return <Navigate to='/login' />;
 
