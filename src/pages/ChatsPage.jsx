@@ -36,8 +36,8 @@ const ChatsPage = () => {
             <ChatTile
               key={chat.chat_id}
               chatTitle={chat.chat_title}
-              dmLink={'dm/' + chat.chat_title}
-              imageLink={PROFILE_PICTURES_PREFIX + chat.chat_title + '.png'}
+              dmLink={'dm/' + chat.chat_username}
+              imageLink={PROFILE_PICTURES_PREFIX + chat.chat_username + '.png'}
               lastMessage={chat.messages[chat.messages.length - 1].msg.slice(
                 0,
                 50

@@ -14,8 +14,8 @@ const ChatTile = (props) => {
             <p> {lastMessage} </p>
           </div>
         </div>
-        <div class='time'>
-          <p class='time'>{time}</p>
+        <div className='time'>
+          <p className='time'>{time}</p>
         </div>
       </div>
     </Link>

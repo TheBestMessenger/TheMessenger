@@ -1,153 +1,174 @@
 import './DMPage.css';
-import {useRef, useEffect, useContext, useState} from 'react';
-import {useParams} from 'react-router-dom';
-import {BACKEND_SERVER_ROOT, PROFILE_PICTURES_PREFIX} from '../config';
+import { useRef, useEffect, useContext, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { BACKEND_SERVER_ROOT, PROFILE_PICTURES_PREFIX } from '../config';
 
 import DMHeader from '../components/DMHeader/DMHeader';
 import DMInput from '../components/DMInput/DMInput';
 import Message from '../components/Message/Message';
 import ContextMenu from '../components/Message/ContextMenu';
 import UserContext from '../contexts/UserContext';
-import UserInfo from '../components/UserInfo/UserInfo';
-
 
 const DMPage = () => {
-    const userContext = useContext(UserContext);
-    const {chat_id} = useParams();
-    const messages =
-        userContext.chats.length !== 0
-            ? userContext.chats[
-                userContext.chats.findIndex((chat) => chat.chat_id === chat_id)
-                ].messages
-            : [];
+  const loadingRef = useRef(false);
+  const userContext = useContext(UserContext);
+  const { chat_username } = useParams();
+  const chatInd = userContext.chats.findIndex(
+    (chat) => chat.chat_username === chat_username
+  );
 
-    const messagesEndRef = useRef(null);
-    const scrollToBottom = () => {
-        messagesEndRef.current.scrollIntoView();
-    };
+  if (chatInd === -1) {
+    // TODO: create chat request goes here
+  }
 
-    const handleMessageSend = (msg) => {
-        fetch(BACKEND_SERVER_ROOT + chat_id + '/sendMessage', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                authorId: userContext.authorId,
-                message: msg,
-            }),
-        });
-    };
+  const chatTitle = userContext.chats[chatInd].chat_title;
+  const chatId = userContext.chats[chatInd].chat_id;
+  const messages = userContext.chats[chatInd].messages;
 
-    useEffect(() => {
-        scrollToBottom();
-    }, [userContext]);
+  const messagesEndRef = useRef(null);
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView();
+  };
 
-    const menuRef = useRef(null);
-    const xPos = useRef('');
-    const yPos = useRef('');
-    const cmMessageId = useRef('');
-    const [showMenu, setShowMenu] = useState(false);
-
-    document.addEventListener('contextmenu', (event) => {
-        if (event.target.classList.contains('message')) event.preventDefault();
-        if (
-            event.target.classList.contains('out-message') ||
-            event.target.parentElement.classList.contains('out-message')
-        ) {
-            xPos.current = event.pageX + 'px';
-            yPos.current = event.pageY + 'px';
-            cmMessageId.current =
-                event.target.getAttribute('message_id') ||
-                event.target.parentElement.getAttribute('message_id');
-            setShowMenu(true);
+  const handleMessageSend = (msg) => {
+    if (loadingRef.current) return;
+    loadingRef.current = true;
+    fetch(BACKEND_SERVER_ROOT + '/sendMessage', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        device_id: userContext.device_id,
+        chat_id: chatId,
+        message: msg,
+      }),
+    })
+      .then(async (response) => {
+        loadingRef.current = false;
+        try {
+          if (response.status === 400) {
+            const errorText = await response.json();
+            console.log('Unhandled 400 error' + errorText);
+          }
+        } catch (error) {
+          console.log(`Unhandled 400 error json parse error: ${error}`);
         }
-    });
-    document.addEventListener('click', (event) => {
-        event.preventDefault();
-        setShowMenu(false);
-    });
+      })
+      .catch(() => {
+        loadingRef.current = false;
+      });
+  };
 
-    const sendEditRequest = useRef(() => {
-    });
-    const [editMode, setEditMode] = useState(false);
+  useEffect(() => {
+    scrollToBottom();
+  }, [userContext]);
 
-    const handleEdit = (message_id) => {
-        sendEditRequest.current = (new_msg) => {
-            fetch(BACKEND_SERVER_ROOT + chat_id + '/editMessage', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    authorId: userContext.authorId,
-                    message_id: message_id,
-                    new_msg: new_msg,
-                }),
-            });
-            setEditMode(false);
-        };
-        setEditMode(true);
+  const menuRef = useRef(null);
+  const xPos = useRef('');
+  const yPos = useRef('');
+  const cmMessageId = useRef('');
+  const [showMenu, setShowMenu] = useState(false);
+
+  document.addEventListener('contextmenu', (event) => {
+    if (event.target.classList.contains('message')) event.preventDefault();
+    if (
+      event.target.classList.contains('out-message') ||
+      event.target.parentElement.classList.contains('out-message')
+    ) {
+      xPos.current = event.pageX + 'px';
+      yPos.current = event.pageY + 'px';
+      cmMessageId.current =
+        event.target.getAttribute('message_id') ||
+        event.target.parentElement.getAttribute('message_id');
+      setShowMenu(true);
+    }
+  });
+  document.addEventListener('click', (event) => {
+    event.preventDefault();
+    setShowMenu(false);
+  });
+
+  const sendEditRequest = useRef(() => {});
+  const [editMode, setEditMode] = useState(false);
+
+  const handleEdit = (message_id) => {
+    sendEditRequest.current = (new_msg) => {
+      fetch(BACKEND_SERVER_ROOT + chat_username + '/editMessage', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          authorId: userContext.authorId,
+          message_id: message_id,
+          new_msg: new_msg,
+        }),
+      });
+      setEditMode(false);
     };
+    setEditMode(true);
+  };
 
-    const handleMessageEdit = (msg) => {
-        sendEditRequest.current(msg);
-    };
+  const handleMessageEdit = (msg) => {
+    sendEditRequest.current(msg);
+  };
 
-    const handleDelete = (message_id) => {
-        fetch(BACKEND_SERVER_ROOT + chat_id + '/deleteMessage', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                authorId: userContext.authorId,
-                message_id: message_id,
-            }),
-        });
-    };
+  const handleDelete = (message_id) => {
+    fetch(BACKEND_SERVER_ROOT + chat_username + '/deleteMessage', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        authorId: userContext.authorId,
+        message_id: message_id,
+      }),
+    });
+  };
 
-    const messageToEdit = Array.isArray(messages) ? messages.find(it => it.message_id === cmMessageId.current) : 0;
+  const messageToEdit = Array.isArray(messages)
+    ? messages.find((it) => it.message_id === cmMessageId.current)
+    : 0;
 
-    return (
-        <>
-
-            <DMHeader
-                goBackLink='/'
-                chatTitle={chat_id}
-                imageLink={'../' + PROFILE_PICTURES_PREFIX + chat_id + '.png'}
-            />
-            <div
-                style={{position: 'absolute', top: yPos.current, left: xPos.current}}
-                ref={menuRef}
-            >
-                {showMenu ? (
-                    <ContextMenu
-                        message_id={cmMessageId.current}
-                        handleEdit={handleEdit}
-                        handleDelete={handleDelete}
-                    />
-                ) : (
-                    ''
-                )}
-            </div>
-            <div className='message-container'>
-                {messages.map((message) => (
-                    <Message
-                        key={message.message_id}
-                        text={message.msg}
-                        fromMe={message.me}
-                        time={message.time}
-                        edited={message.edited}
-                        message_id={message.message_id}
-                    />
-                ))}
-            </div>
-            <DMInput
-                handleMessage={editMode ? handleMessageEdit : handleMessageSend}
-                sendText={editMode ? 'edit' : 'send'}
-                editMode={editMode}
-                messageToEdit={messageToEdit}
-            />
-            <div ref={messagesEndRef}>
-                <></>
-            </div>
-        </>
-    );
+  return (
+    <>
+      <DMHeader
+        goBackLink='/'
+        chatTitle={chatTitle}
+        imageLink={'../' + PROFILE_PICTURES_PREFIX + chat_username + '.png'}
+      />
+      <div
+        style={{ position: 'absolute', top: yPos.current, left: xPos.current }}
+        ref={menuRef}
+      >
+        {showMenu ? (
+          <ContextMenu
+            message_id={cmMessageId.current}
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
+          />
+        ) : (
+          ''
+        )}
+      </div>
+      <div className='message-container'>
+        {messages.map((message) => (
+          <Message
+            key={message.message_id}
+            text={message.msg}
+            fromMe={message.me}
+            time={message.time}
+            edited={message.edited}
+            message_id={message.message_id}
+          />
+        ))}
+      </div>
+      <DMInput
+        handleMessage={editMode ? handleMessageEdit : handleMessageSend}
+        sendText={editMode ? 'edit' : 'send'}
+        editMode={editMode}
+        messageToEdit={messageToEdit}
+      />
+      <div ref={messagesEndRef}>
+        <></>
+      </div>
+    </>
+  );
 };
 
 export default DMPage;

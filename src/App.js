@@ -58,7 +58,30 @@ function App() {
             return;
           }
           lastVersionRef.current = data.version;
-          const chatsNew = chatsRef.current.concat(data.delta);
+          if (
+            data.delta.length === 0 &&
+            data.deleted.length === 0 &&
+            data.edited.length === 0
+          ) {
+            loadingRef.current = false;
+            return;
+          }
+          console.log('something');
+          const chatsNew = chatsRef.current;
+          for (const d_chat of data.delta) {
+            const chatInd = chatsNew.findIndex(
+              (chat) => chat.chat_id === d_chat.chat_id
+            );
+            if (chatInd === -1) {
+              chatsNew.push(d_chat);
+            } else {
+              chatsNew[chatInd].chat_title = d_chat.chat_title;
+              chatsNew[chatInd].chat_username = d_chat.chat_username;
+              chatsNew[chatInd].messages = chatsNew[chatInd].messages.concat(
+                d_chat.messages
+              );
+            }
+          }
           const getIndexes = (chat_id, message_id) => {
             const chatInd = chatsNew.findIndex(
               (chat) => chat.chat_id === chat_id
@@ -111,7 +134,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/' element={<ChatsPage />} />
-          <Route path='/dm/:chat_id' element={<DMPage />} />
+          <Route path='/dm/:chat_username' element={<DMPage />} />
           <Route path='*' element={<ErrorNotFound />} />
         </Routes>
       </Router>
