@@ -1,0 +1,15 @@
+.sign-button {
+    height: 6vh;
+    width: 44vh;
+    border-radius: 1vh;
+    background-color: rgb(73, 154, 234);
+    border-style: hidden;
+    font-size: 2vh;
+    color: #ffffff;
+    margin-top: 3vh;
+    transition: all 0.3s linear;
+  }
+  
+  .sign-button:hover {
+    background-color: rgb(42, 86, 181);
+  }

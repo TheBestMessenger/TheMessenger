@@ -1,35 +1,23 @@
 import './Login.css';
+import SignButton from '../components/LoginReg/SignButton';
+import DataInput from '../components/LoginReg/DataInput';
+import Subtitle from '../components/LoginReg/Subtitle';
+import Logo from '../components/LoginReg/Logo';
 
 const LoginPage = () => {
+  const eyePath = '/eye.png';
   return (
     <>
       <div class='logo'>
-        <img className='logo-img' src='/logo512.png' alt='logo' />
-        <span className='sign-in'>Sign in to Telegram</span>
-        <div className='subtitle'>
-          <span className='info'>
-            Please enter your phone number and password.
-          </span>
-        </div>
-        <form className='sign-in' method='post'>
-          <div className='phone-num'>
-            <input type='text' id='phone' required />
-            <label className='label-login'>Phone number</label>
-          </div>
-          <div className='password'>
-            <input type='password' id='password' required />
-            <label className='label-login'>Password</label>
-          </div>
-          <button className='sign-button' type='button'>
-            SIGN IN
-          </button>
+        <Logo path='/logo512.png' text='Sign in to Telegram'/>
+        <Subtitle text='Please enter your @username and password.' error={0}/>
+        <form className='signForm' method='post'>
+          <DataInput info='@username' path={eyePath} error='username is incorrect'/>
+          <DataInput info='Password' path={eyePath} error='Password is incorrect'/>
+          <SignButton info='SIGN IN'/>
         </form>
-        <div className='subtitle2'>
-          <span className='info'>Don't have account yet?</span>
-        </div>
-        <button className='sign-up-button' type='button'>
-          SIGN UP
-        </button>
+        <Subtitle text="Don't have account yet?" error={0}/>
+        <SignButton info='SIGN UP'/>
       </div>
     </>
   );
