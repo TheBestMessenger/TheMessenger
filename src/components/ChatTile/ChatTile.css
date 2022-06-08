@@ -15,10 +15,9 @@
 }
 
 .friend:hover {
-  background-color: rgb(44,44,44);
+  background-color: rgb(44, 44, 44);
   border-radius: 0.75rem;
 }
-
 
 .img-name {
   display: flex;

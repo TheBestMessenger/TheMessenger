@@ -1,61 +1,61 @@
 header {
-    z-index: 2;
-    top: 0;
-    background-color: #212121;
-    position: sticky;
-    display: block;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    box-shadow: 0 0 10px 10px rgba(16, 16, 16, 0.611765);
-    height: 80px;
+  z-index: 2;
+  top: 0;
+  background-color: #212121;
+  position: sticky;
+  display: block;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  box-shadow: 0 0 10px 10px rgba(16, 16, 16, 0.611765);
+  height: 80px;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .avatar {
-    height: 7vh;
-    border-radius: 50%;
-    margin-right: 3vh;
+  height: 7vh;
+  border-radius: 50%;
+  margin-right: 3vh;
 }
 
 .user {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: 45%;
-    margin-top: 20px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 45%;
+  margin-top: 20px;
 }
 
 .user-name {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1em;
-    font-weight: bold;
-    color: #FFFFFF;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+  font-weight: bold;
+  color: #ffffff;
 }
 
 .status {
-    margin-top: 5%;
-    font-family: 'Roboto', sans-serif;
-    color: #AAAAAA;
+  margin-top: 5%;
+  font-family: 'Roboto', sans-serif;
+  color: #aaaaaa;
 }
 
 .back-to-chats {
-    position: absolute;
-    margin-left: 3%;
-    margin-top: 22px;
-    padding: 10px;
+  position: absolute;
+  margin-left: 3%;
+  margin-top: 22px;
+  padding: 10px;
 }
 
 .back-to-chats:hover {
-    background-color: #AAAAAA14;
-    border-radius: 20px;
+  background-color: #aaaaaa14;
+  border-radius: 20px;
 }
 
 .return-chats-text {
-    font-family: 'Roboto', sans-serif;
-    color: #AAAAAA;
-    margin: 0;
+  font-family: 'Roboto', sans-serif;
+  color: #aaaaaa;
+  margin: 0;
 }
