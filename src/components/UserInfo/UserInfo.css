@@ -9,11 +9,11 @@
     margin-left:80%;
   }
 .button{
-    margin-left:85%;
+    margin-left: calc(100% - 100px);
 }
   .button-image {
-    width: 45%;
-    height: 45%;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     padding:10px;
   }
