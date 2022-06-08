@@ -10,7 +10,9 @@ import ContextMenu from '../components/Message/ContextMenu';
 import UserContext from '../contexts/UserContext';
 
 const DMPage = () => {
-  const loadingRef = useRef(false);
+  const sendLoadingRef = useRef(false);
+  const editLoadingRef = useRef(false);
+  const deleteLoadingRef = useRef(false);
   const userContext = useContext(UserContext);
   const { chat_username } = useParams();
   const chatInd = userContext.chats.findIndex(
@@ -31,8 +33,8 @@ const DMPage = () => {
   };
 
   const handleMessageSend = (msg) => {
-    if (loadingRef.current) return;
-    loadingRef.current = true;
+    if (sendLoadingRef.current) return;
+    sendLoadingRef.current = true;
     fetch(BACKEND_SERVER_ROOT + '/sendMessage', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -43,18 +45,20 @@ const DMPage = () => {
       }),
     })
       .then(async (response) => {
-        loadingRef.current = false;
+        sendLoadingRef.current = false;
         try {
           if (response.status === 400) {
             const errorText = await response.json();
-            console.log('Unhandled 400 error' + errorText);
+            console.log('Unhandled 400 error');
+            console.log(errorText);
           }
         } catch (error) {
-          console.log(`Unhandled 400 error json parse error: ${error}`);
+          console.log('Unhandled 400 error json parse error');
+          console.log(error);
         }
       })
       .catch(() => {
-        loadingRef.current = false;
+        sendLoadingRef.current = false;
       });
   };
 
@@ -92,15 +96,34 @@ const DMPage = () => {
 
   const handleEdit = (message_id) => {
     sendEditRequest.current = (new_msg) => {
-      fetch(BACKEND_SERVER_ROOT + chat_username + '/editMessage', {
+      if (editLoadingRef.current) return;
+      editLoadingRef.current = true;
+      fetch(BACKEND_SERVER_ROOT + '/editMessage', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          authorId: userContext.authorId,
+          device_id: userContext.device_id,
+          chat_id: chatId,
           message_id: message_id,
-          new_msg: new_msg,
+          new_message: new_msg,
         }),
-      });
+      })
+        .then(async (response) => {
+          editLoadingRef.current = false;
+          try {
+            if (response.status === 400) {
+              const errorText = await response.json();
+              console.log('Unhandled 400 error');
+              console.log(errorText);
+            }
+          } catch (error) {
+            console.log('Unhandled 400 error json parse error');
+            console.log(error);
+          }
+        })
+        .catch(() => {
+          editLoadingRef.current = false;
+        });
       setEditMode(false);
     };
     setEditMode(true);
@@ -111,14 +134,33 @@ const DMPage = () => {
   };
 
   const handleDelete = (message_id) => {
-    fetch(BACKEND_SERVER_ROOT + chat_username + '/deleteMessage', {
+    if (deleteLoadingRef.current) return;
+    deleteLoadingRef.current = true;
+    fetch(BACKEND_SERVER_ROOT + '/deleteMessage', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        authorId: userContext.authorId,
+        device_id: userContext.device_id,
+        chat_id: chatId,
         message_id: message_id,
       }),
-    });
+    })
+      .then(async (response) => {
+        deleteLoadingRef.current = false;
+        try {
+          if (response.status === 400) {
+            const errorText = await response.json();
+            console.log('Unhandled 400 error');
+            console.log(errorText);
+          }
+        } catch (error) {
+          console.log('Unhandled 400 error json parse error');
+          console.log(error);
+        }
+      })
+      .catch(() => {
+        deleteLoadingRef.current = false;
+      });
   };
 
   const messageToEdit = Array.isArray(messages)

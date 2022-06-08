@@ -66,7 +66,6 @@ function App() {
             loadingRef.current = false;
             return;
           }
-          console.log('something');
           const chatsNew = chatsRef.current;
           for (const d_chat of data.delta) {
             const chatInd = chatsNew.findIndex(
