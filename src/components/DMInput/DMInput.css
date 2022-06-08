@@ -10,6 +10,12 @@
   z-index: 1;
 }
 
+.picker {
+  position: absolute;
+  bottom: 105px;
+  left: 5%;
+}
+
 .form {
   display: flex;
   align-items: center;
@@ -19,17 +25,40 @@
 
 .cmd {
   width: 100%;
-  display: inline-block;
+  display: flex;
+  justify-content: space-between;
   border-radius: 10px;
   background-color: #212121;
 }
 
+.emoji-picker-button {
+  position: absolute;
+  display: contents;
+  width: 25px;
+  height: 25px;
+  bottom: 48%;
+  margin-left: 12px;
+  border: none;
+  background-color: transparent;
+}
+
+.emoji-picker-icon {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  bottom: 48%;
+  margin-left: 12px;
+  border: none;
+  background-color: transparent;
+  border-radius: 50%;
+}
+
 .texta {
   display: inline-block;
-  width: 95%;
+  width: calc(100% - 40px);
   height: 100%;
   border: none;
-  margin: 10px;
+  margin: 10px 10px 10px 50px;
   outline: none;
   resize: none;
   background-color: transparent;
