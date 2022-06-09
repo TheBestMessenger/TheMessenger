@@ -206,6 +206,40 @@ const DMPage = () => {
     'https://messenger-storage.s3.amazonaws.com/default/blank-profile-picture.png'
   );
 
+  const chatImageLoadingRef = useRef(false);
+  useEffect(() => {
+    if (chatInd === -1) return;
+    if (chatUsername === '') return;
+    if (chatImageLoadingRef.current) return;
+    chatImageLoadingRef.current = true;
+    fetch(BACKEND_SERVER_ROOT + '/getProfilePicture', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: chatUsername,
+      }),
+    })
+      .then(async (response) => {
+        chatImageLoadingRef.current = false;
+        try {
+          if (response.status === 200) {
+            const profileMeta = await response.json();
+            setChatImage(profileMeta.profile_picture);
+          } else if (response.status === 400) {
+            const errorText = await response.json();
+            console.log('Unhandled 400 error');
+            console.log(errorText);
+          }
+        } catch (error) {
+          console.log('Json parse error');
+          console.log(error);
+        }
+      })
+      .catch(() => {
+        chatImageLoadingRef.current = false;
+      });
+  }, [chatInd]);
+
   const messageToEdit = Array.isArray(messages)
     ? messages.find((it) => it.message_id === cmMessageId.current)
     : 0;
